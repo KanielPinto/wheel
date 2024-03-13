@@ -80,9 +80,7 @@ const ForgotPasswordPage: NextPage = () => {
             <div
                 className='bg-white text-black w-96 p-12 rounded-lg'
             >
-                <ClerkLoading>
-                    <div>Clerk is loading</div>
-                </ClerkLoading>
+                
                 <h1 className='py-5 text-2xl'>Forgot Password?</h1>
                 <form
                     style={{

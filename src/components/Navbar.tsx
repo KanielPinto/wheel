@@ -52,8 +52,8 @@ export default function HomeNav() {
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link color="foreground" className="text-xl" href="#">
-                        Integrations
+                    <Link color="foreground" className="text-xl" href="/dashboards">
+                        Dashboard
                     </Link>
                 </NavbarItem>
             </NavbarContent>
