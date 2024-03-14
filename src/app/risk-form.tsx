@@ -1,4 +1,4 @@
-import DashboardNav from "@/components/DashboardNav";
+import DashboardNav from "@/components/Sidebar";
 
 export default function RiskForm(){
     return(

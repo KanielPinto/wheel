@@ -11,7 +11,7 @@ import '@/app/globals.css'
 
 export default function HomeNav() {
     const { isSignedIn, sessionId, userId } = useAuth();
-
+    
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     const menuItems = [
