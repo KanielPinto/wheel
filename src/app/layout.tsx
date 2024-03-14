@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 import { Providers } from '@/app/providers'
+import { dark, shadesOfPurple } from '@clerk/themes';
 
 export const metadata: Metadata = {
   title: "Wheel",
@@ -15,7 +16,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{
+      baseTheme: shadesOfPurple,
+      userProfile: {
+        baseTheme: shadesOfPurple,
+      } 
+    }}>
       <html lang="en" className='dark'>
         <body>
           <Providers>
