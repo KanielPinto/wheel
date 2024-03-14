@@ -1,8 +1,9 @@
 'use client'
 
-import { UserButton } from "@clerk/nextjs";
+import { UserButton, useAuth, useClerk, useUser } from "@clerk/nextjs";
+import { EmailAddress } from "@clerk/nextjs/server";
 import { MoreVertical, ChevronLast, ChevronFirst } from "lucide-react";
-import { useContext, createContext, useState, ReactNode } from "react";
+import { useContext, createContext, useState, ReactNode, useEffect } from "react";
 
 interface SidebarContextType {
     expanded: boolean;
@@ -12,6 +13,22 @@ const SidebarContext = createContext<SidebarContextType>({ expanded: true });
 
 export default function Sidebar({ children }: { children: ReactNode }) {
     const [expanded, setExpanded] = useState<boolean>(true);
+
+    const { user } = useUser();
+    const [userId, setUserId] = useState<string | null>(null);
+    const [userEmail, setUserEmail] = useState<string| undefined>(undefined);
+
+
+
+    useEffect(() => {
+        if (user) {
+            setUserId(user.username);
+            setUserEmail(user.primaryEmailAddress?.emailAddress);
+        } else {
+            setUserId(null);
+            setUserEmail(undefined);
+        }
+    }, [user]); // Ensure session is added to dependency array
 
     return (
         <aside className="h-screen">
@@ -49,10 +66,9 @@ export default function Sidebar({ children }: { children: ReactNode }) {
           `}
                     >
                         <div className="leading-4">
-                            <h4 className="font-semibold">John Doe</h4>
-                            <span className="text-xs text-gray-600">johndoe@gmail.com</span>
+                            <h4 className="font-semibold">{userId}</h4>
+                            <span className="text-xs text-gray-600">{userEmail}</span>
                         </div>
-                        <MoreVertical size={20} />
                     </div>
                 </div>
             </nav>
@@ -77,7 +93,7 @@ export function SidebarItem({ icon, text, active, alert }: SidebarItemProps) {
         font-medium rounded-md cursor-pointer
         transition-colors group h-min
         ${active
-                    ? " bg-purple-950 text-purple-100 hover:bg-purple-600"
+                    ? " bg-purple-950 text-purple-50 hover:bg-purple-600"
                     : "hover:bg-purple-600 text-purple-200"
                 }
     `}
