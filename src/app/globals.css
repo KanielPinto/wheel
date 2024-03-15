@@ -39,3 +39,16 @@ Link{
     text-wrap: balance;
   }
 }
+
+.text-contour {
+  stroke: none!important;
+}
+
+.text-stroke {
+  stroke: white!important;
+  letter-spacing: 1.5px!important;
+}
+
+svg {
+  overflow: visible!important;
+}

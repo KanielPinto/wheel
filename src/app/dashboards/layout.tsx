@@ -16,7 +16,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <SidebarItem href="/dashboards/risk-assessment" icon={<FileQuestion size={20} />} text="Risk Assessment" active={route === '/dashboards/risk-assessment'} />
             </Sidebar>
 
-            <div className="px-16 lg:px-0 w-48">
+            <div className="px-16 lg:px-0 w-full">
                 {children}
             </div>
         </main>
