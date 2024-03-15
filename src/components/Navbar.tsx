@@ -11,22 +11,10 @@ import '@/app/globals.css'
 
 export default function HomeNav() {
     const { isSignedIn, sessionId, userId } = useAuth();
-    
+
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-    const menuItems = [
-        "Profile",
-        "Dashboard",
-        "Activity",
-        "Analytics",
-        "System",
-        "Deployments",
-        "My Settings",
-        "Team Settings",
-        "Help & Feedback",
-        "Log Out",
-    ];
-
+    
     return (
         <Navbar isBordered maxWidth="full" onMenuOpenChange={setIsMenuOpen}>
             <NavbarContent>
@@ -86,20 +74,21 @@ export default function HomeNav() {
                 )}
 
             <NavbarMenu>
-                {menuItems.map((item, index) => (
-                    <NavbarMenuItem key={`${item}-${index}`}>
-                        <Link
-                            color={
-                                index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
-                            }
-                            className="w-full"
-                            href="#"
-                            size="lg"
-                        >
-                            {item}
-                        </Link>
-                    </NavbarMenuItem>
-                ))}
+                <NavbarMenuItem>
+                    <Link color="foreground" className="text-xl" href="/">
+                        Home
+                    </Link>                
+                </NavbarMenuItem>
+                <NavbarMenuItem>
+                    <Link color="foreground" className="text-xl" href="/about-us">
+                        About Us
+                    </Link>                
+                </NavbarMenuItem>
+                <NavbarMenuItem>
+                    <Link color="foreground" className="text-xl" href="/dashboards/my-wheel">
+                        Dashboards
+                    </Link>                
+                </NavbarMenuItem>
             </NavbarMenu>
         </Navbar >
     );

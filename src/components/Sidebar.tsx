@@ -33,7 +33,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
     }, [user]); // Ensure session is added to dependency array
 
     return (
-        <aside className="h-screen">
+        <aside className="h-screen absolute lg:relative">
             <nav className="h-full flex flex-col bg-gray-950 border-r shadow-sm">
                 <div className="p-4 pb-2 flex justify-between items-center">
                     <Link href="/" className="flex items-center hover:opacity-90">

@@ -1,24 +1,24 @@
-import Sidebar, { SidebarItem } from "@/components/Sidebar";
-import { BarChart3, FileQuestion, LifeBuoy, Newspaper } from "lucide-react";
+'use client'
 
-export default function DashboardLayout({
-    children,
-}: {
-    children: React.ReactNode
-}) {
+import Sidebar, { SidebarItem } from '@/components/Sidebar';
+import { BarChart3, FileQuestion, LifeBuoy, Newspaper } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+    const route = usePathname();
+
     return (
         <main className="flex">
             <Sidebar>
-                <SidebarItem href="/dashboards/my-wheel" icon={<LifeBuoy size={20}></LifeBuoy>} text="My Wheel" active></SidebarItem>
-                <SidebarItem href="/dashboards/news" icon={<Newspaper size={20}></Newspaper>} text="News"></SidebarItem>
-                <SidebarItem href="/dashboards/stocks" icon={<BarChart3 size={20}></BarChart3>} text="Stock Tracker"></SidebarItem>
-                <SidebarItem href="/dashboards/risk-assessment" icon={<FileQuestion size={20}></FileQuestion>} text="Risk Assessment"></SidebarItem>
+                <SidebarItem href="/dashboards/my-wheel" icon={<LifeBuoy size={20} />} text="My Wheel" active={route === '/dashboards/my-wheel'} />
+                <SidebarItem href="/dashboards/news" icon={<Newspaper size={20} />} text="News" active={route === '/dashboards/news'} />
+                <SidebarItem href="/dashboards/stocks" icon={<BarChart3 size={20} />} text="Stock Tracker" active={route === '/dashboards/stocks'} />
+                <SidebarItem href="/dashboards/risk-assessment" icon={<FileQuestion size={20} />} text="Risk Assessment" active={route === '/dashboards/risk-assessment'} />
             </Sidebar>
 
-            <div className="w-48">
-
+            <div className="px-16 lg:px-0 w-48">
                 {children}
             </div>
         </main>
-    )
+    );
 }
