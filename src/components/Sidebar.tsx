@@ -3,6 +3,8 @@
 import { UserButton, useAuth, useClerk, useUser } from "@clerk/nextjs";
 import { EmailAddress } from "@clerk/nextjs/server";
 import { MoreVertical, ChevronLast, ChevronFirst } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useContext, createContext, useState, ReactNode, useEffect } from "react";
 
 interface SidebarContextType {
@@ -16,7 +18,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
 
     const { user } = useUser();
     const [userId, setUserId] = useState<string | null>(null);
-    const [userEmail, setUserEmail] = useState<string| undefined>(undefined);
+    const [userEmail, setUserEmail] = useState<string | undefined>(undefined);
 
 
 
@@ -34,7 +36,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
         <aside className="h-screen">
             <nav className="h-full flex flex-col bg-gray-950 border-r shadow-sm">
                 <div className="p-4 pb-2 flex justify-between items-center">
-                    <div className="flex items-center">
+                    <Link href="/" className="flex items-center hover:opacity-90">
                         <img
                             src="/ship-wheel.svg"
                             className={`overflow-hidden fill-white transition-all ${expanded ? "w-10" : "w-0"
@@ -43,7 +45,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
                         />
                         <p className={`px-2 font-semibold text-lg ${expanded ? "visible" : "hidden"
                             }`} >WHEEL</p>
-                    </div>
+                    </Link>
 
                     <button
                         onClick={() => setExpanded((curr) => !curr)}
@@ -77,54 +79,58 @@ export default function Sidebar({ children }: { children: ReactNode }) {
 }
 
 interface SidebarItemProps {
+    href: string;
     icon: ReactNode;
     text: string;
     active?: boolean;
     alert?: boolean;
 }
 
-export function SidebarItem({ icon, text, active, alert }: SidebarItemProps) {
+export function SidebarItem({ href, icon, text, alert, active }: SidebarItemProps) {
     const { expanded } = useContext(SidebarContext);
 
     return (
-        <li
-            className={`
+        <Link href={href}>
+            <li
+                className={`
         relative flex items-center py-2 px-3 my-1
         font-medium rounded-md cursor-pointer
         transition-colors group h-min
         ${active
-                    ? " bg-purple-950 text-purple-50 hover:bg-purple-600"
-                    : "hover:bg-purple-600 text-purple-200"
-                }
+                        ? " bg-purple-950 text-purple-50 hover:bg-purple-600"
+                        : "hover:bg-purple-600 text-purple-200"
+                    }
     `}
-        >
-            {icon}
-            <span
-                className={`overflow-hidden transition-all ${expanded ? "w-52 ml-3" : "w-0"
-                    }`}
             >
-                {text}
-            </span>
-            {alert && (
-                <div
-                    className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 ${expanded ? "" : "top-2"
+                {icon}
+                <span
+                    className={`overflow-hidden transition-all ${expanded ? "w-52 ml-3" : "w-0"
                         }`}
-                />
-            )}
+                >
+                    {text}
+                </span>
+                {alert && (
+                    <div
+                        className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 ${expanded ? "" : "top-2"
+                            }`}
+                    />
+                )}
 
-            {!expanded && (
-                <div
-                    className={`
+                {!expanded && (
+                    <div
+                        className={`
           absolute left-full rounded-md px-2 py-1 ml-6
           bg-purple-100 text-purple-950 text-sm
           w-max
           invisible opacity-20 -translate-x-3 transition-all
           group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
       `}
-                >
-                    {text}
-                </div>
-            )}
-        </li>
+                    >
+                        {text}
+                    </div>
+                )}
+            </li>
+        </Link>
+
     );
 }
