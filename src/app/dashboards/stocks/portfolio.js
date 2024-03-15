@@ -3,12 +3,12 @@ const mydata = {
   "children": [
     {
       "name": "Others",
-      "color": "#ffffff50",
+      "color": "#ffffff75",
       "style": "",
       "children": [
         {
           "name": "Gold",
-          "color": "#ffbf0050",
+          "color": "#ffbf0075",
           "value": 5
         },
         {
@@ -19,37 +19,37 @@ const mydata = {
     },
     {
       "name": "Mutual Funds",
-      "color": "#cc996650",
+      "color": "#cc996675",
       "children": [
         {
           "name": "Largecap",
-          "color": "#4dffa650",
+          "color": "#4dffa675",
           "children": [
             {
               "name": "HDFC Largecap Fund",
-              "color": "#ff4d4d50",
+              "color": "#ff4d4d75",
               "value": 15
             },
             {
               "name": "Axis Emerging Equities",
-              "color": "#4da6ff50",
+              "color": "#4da6ff75",
               "value": 15
             }
           ]
         },
         {
           "name": "Midcap",
-          "color": "#4da6ff50",
+          "color": "#4da6ff75",
           "value": 20
         },
         {
           "name": "Smallcap",
-          "color": "#ff4d4d50",
+          "color": "#ff4d4d75",
           "value": 20
         },
         {
           "name": "Index",
-          "color": "#944dff50",
+          "color": "#944dff75",
           "value": 10
         }
       ]

@@ -21,7 +21,6 @@ export default function Chart({ data, amount }) {
     <div className="p-16 flex font-poppins w-full justify-center items-center self-center">
       {ReactSunburst ? (
         <ReactSunburst
-          style="color: red;"
           nodeClassName="style"
           ref={chartRef}
           width={400}
