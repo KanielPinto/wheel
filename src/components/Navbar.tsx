@@ -52,7 +52,7 @@ export default function HomeNav() {
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link color="foreground" className="text-xl" href="/dashboards">
+                    <Link color="foreground" className="text-xl" href="/dashboards/my-wheel">
                         Dashboard
                     </Link>
                 </NavbarItem>
