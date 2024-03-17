@@ -6,7 +6,7 @@ import mydata from '../my-wheel/portfolio'
 export default function Stocks() {
     return (
         <>
-            <h1 className="w-full py-4 px-6 text-3xl font-bold">Stocks</h1>
+            <h1 className="w-full py-4  text-3xl font-bold">Stocks</h1>
 
         </>
     )

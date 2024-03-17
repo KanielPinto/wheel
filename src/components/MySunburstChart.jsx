@@ -18,13 +18,13 @@ export default function Chart({ data, amount }) {
   }, []);
 
   return (
-    <div className="p-16 flex font-poppins w-full justify-center items-center self-center">
+    <div className="pt-6 flex font-poppins w-full justify-center items-center self-center">
       {ReactSunburst ? (
         <ReactSunburst
           nodeClassName="style"
           ref={chartRef}
-          width={400}
-          height={400}
+          width={350}
+          height={350}
           maxLevels={2}
           excludeRoot
           label="name"

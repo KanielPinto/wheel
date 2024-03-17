@@ -17,7 +17,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <SidebarItem href="/dashboards/expenses" icon={<LucideBadgeIndianRupee size={20} />} text="Expenses" active={route === '/dashboards/expenses'} />
             </Sidebar>
 
-            <div className="px-16 lg:px-0 w-full">
+            <div className="md:px-7 px-5 w-full h-full">
                 {children}
             </div>
         </main>
