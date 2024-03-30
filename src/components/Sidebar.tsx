@@ -23,7 +23,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
     const [userEmail, setUserEmail] = useState<string | undefined>(undefined);
 
     useEffect(() => {
-        
+
     }, []);
 
     useEffect(() => {
@@ -49,7 +49,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
 
     }, [user]); // Ensure session is added to dependency array
 
-    
+
 
     return (
         <SidebarContext.Provider value={{ expanded, isMobile }}>
@@ -130,9 +130,9 @@ export function SidebarItem({ href, icon, text, alert, active }: SidebarItemProp
         <Link href={href}>
             <li
                 className={`
-                relative flex items-center py-2 px-3 my-2
+                relative flex items-center py-3 px-3 my-2
                 font-medium rounded-md cursor-pointer
-                transition-colors group h-min
+                transition-colors group h-minfor
                 ${active
                         ? " bg-purple-950 text-purple-50 hover:bg-purple-600"
                         : "hover:bg-purple-600 text-purple-200"
@@ -141,7 +141,7 @@ export function SidebarItem({ href, icon, text, alert, active }: SidebarItemProp
             >
                 {icon}
                 <span
-                    className={`overflow-hidden transition-all ${expanded ? "w-52 ml-3" : "w-0"
+                    className={`overflow-hidden absolute opacity-0 transition-all ${expanded ? "relative w-52 ml-3 opacity-100" : "w-0"
                         }`}
                 >
                     {text}
