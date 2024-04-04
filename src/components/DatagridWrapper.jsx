@@ -25,7 +25,7 @@ function DataGridWrapper({ rows, columns, slots = null, slotProps = null, styles
                     pagination: { paginationModel: { pageSize: pageSize } },
                 }}
                 pageSizeOptions={[5, 10, 25, 100]}
-                className={`!border-0 max-w-full rounded-2xl bg-white dark:bg-gray-800`}
+                className={`!border-0 max-w-full rounded-full bg-white dark:bg-gray-800`}
                 rows={rows} columns={columns}
                 sx={{
                     "&.MuiDataGrid-root .MuiDataGrid-cell:focus-within": {
@@ -34,10 +34,10 @@ function DataGridWrapper({ rows, columns, slots = null, slotProps = null, styles
                     '.MuiDataGrid-cell:where(.dark, .dark *)': {
                         color: "white",
                     },
-                    '.MuiDataGrid-columnHeaderTitle:where(.dark, .dark *)': {
-                        color: "white",
-                    },
-                    '.MuiDataGrid-columnHeaders': {
+                    // '.MuiDataGrid-columnHeaderTitle:where(.dark, .dark *)': {
+                    //     color: "white",
+                    // },
+                    '.MuiDataGrid-css-1essi2g-MuiDataGrid-columnHeaderRow': { 
                         background: "black !important"
                     },
                     '.MuiToolbar-root:where(.dark, .dark *)': {
