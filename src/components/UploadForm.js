@@ -2,10 +2,13 @@
 'use client'
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { useUser } from '@clerk/nextjs';
 
 const UploadForm = () => {
 //   const router = useRouter();
   const [file, setFile] = useState(null);
+
+  const { user } = useUser();
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -16,6 +19,7 @@ const UploadForm = () => {
     
     const formData = new FormData();
     formData.append('pdf', file);
+    formData.append('uid', user.id)
 
     try {
       const response = await fetch(`http://localhost:5000/upload`, {
