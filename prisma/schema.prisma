@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = "mongodb+srv://wheeladmin:wheeladmin@wheelcluster.q0b7sjt.mongodb.net/final?retryWrites=true&w=majority&appName=WheelCluster"
+}
+
+model expenses {
+  id     String   @id @default(auto()) @map("_id") @db.ObjectId
+  amount Int
+  date   DateTime @db.Date
+  email  String
+}
+
+model mutual_fund_schemes {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  /// Multiple data types found: Float: 50%, Int: 50% out of 4 sampled entries
+  cagr_1yr   Json?
+  /// Multiple data types found: Float: 50%, Int: 50% out of 4 sampled entries
+  cagr_3yr   Json?
+  category   String?
+  schemeCode Int
+  schemeName String
+}
+
+model names {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  names String
+
+  @@index([names], map: "names_1")
+}
+
+model users {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  email      String @unique(map: "email_1")
+  name       String
+  risk_score Int
+  weights    Int[]
+}
+
+model User {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  externalId String   @unique
+  attributes Json
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
