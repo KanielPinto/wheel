@@ -12,10 +12,11 @@ import React from 'react'
  *  
  * @returns 
  */
-function DataGridWrapper({ rows, columns, slots=null, slotProps=null, styles=null, pageSize=10}) {
+function DataGridWrapper({ rows, columns, slots = null, slotProps = null, styles = null, pageSize = 10 }) {
     return (
         <div className={`${styles} mt-0 m-6 shadow-soft rounded-2xl`}>
             <DataGrid
+                getRowId={(row) => row.transaction_id}
                 disableRowSelectionOnClick
                 disableColumnFilter
                 disableColumnSelector
@@ -24,8 +25,8 @@ function DataGridWrapper({ rows, columns, slots=null, slotProps=null, styles=nul
                     pagination: { paginationModel: { pageSize: pageSize } },
                 }}
                 pageSizeOptions={[5, 10, 25, 100]}
-                className={`!border-0 max-w-full rounded-2xl bg-white dark:bg-light-gray`}
-                rows={rows} columns={columns} 
+                className={`!border-0 max-w-full rounded-2xl bg-white dark:bg-gray-800`}
+                rows={rows} columns={columns}
                 sx={{
                     "&.MuiDataGrid-root .MuiDataGrid-cell:focus-within": {
                         outline: "none !important",
@@ -35,6 +36,9 @@ function DataGridWrapper({ rows, columns, slots=null, slotProps=null, styles=nul
                     },
                     '.MuiDataGrid-columnHeaderTitle:where(.dark, .dark *)': {
                         color: "white",
+                    },
+                    '.MuiDataGrid-columnHeaders': {
+                        background: "black !important"
                     },
                     '.MuiToolbar-root:where(.dark, .dark *)': {
                         color: "white",
@@ -47,8 +51,8 @@ function DataGridWrapper({ rows, columns, slots=null, slotProps=null, styles=nul
                     },
                 }}
                 slots={slots}
-                slotProps={slotProps} 
-                />
+                slotProps={slotProps}
+            />
         </div>
     )
 }
