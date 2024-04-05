@@ -28,23 +28,23 @@ export function NewsCards() {
         <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-10 gap-8">
           <div className="rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20">
             <div className="p-4">
-              <div className="w-full h-4 rounded-lg bg-gray-300 animate-pulse mt-5"></div>
-              <div className="w-full h-4 rounded-lg  bg-gray-300 animate-pulse my-3"></div>
-              <div className="w-full h-4 rounded-lg  bg-gray-300 animate-pulse mt-8"></div>
+              <div className="w-full h-4 rounded-lg bg-zinc-100 animate-pulse mt-5"></div>
+              <div className="w-24 h-4 rounded-lg bg-gray-300 animate-pulse mt-5 mb-3"></div>
+              <div className="w-20 h-4 rounded-lg bg-zinc-300 animate-pulse mt-8"></div>
             </div>
           </div>
           <div className="rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20">
             <div className="p-4">
-              <div className="w-full h-4 rounded-lg  bg-gray-300 animate-pulse mt-5"></div>
-              <div className="w-full h-4 rounded-lg  bg-gray-300 animate-pulse my-3"></div>
-              <div className="w-full h-4 rounded-lg  bg-gray-300 animate-pulse mt-8"></div>
+              <div className="w-full h-4 rounded-lg bg-zinc-100 animate-pulse mt-5"></div>
+              <div className="w-24 h-4 rounded-lg bg-gray-300 animate-pulse mt-5 mb-3"></div>
+              <div className="w-20 h-4 rounded-lg bg-zinc-300 animate-pulse mt-8"></div>
             </div>
           </div>
           <div className="rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20">
             <div className="p-4">
-              <div className="w-full h-4 rounded-lg  bg-gray-300 animate-pulse mt-5"></div>
-              <div className="w-full h-4 rounded-lg  bg-gray-300 animate-pulse my-3"></div>
-              <div className="w-full h-4 rounded-lg  bg-gray-300 animate-pulse mt-8"></div>
+              <div className="w-full h-4 rounded-lg bg-zinc-100 animate-pulse mt-5"></div>
+              <div className="w-24 h-4 rounded-lg bg-gray-300 animate-pulse mt-5 mb-3"></div>
+              <div className="w-20 h-4 rounded-lg bg-zinc-300 animate-pulse mt-8"></div>
             </div>
           </div>
         </div>
