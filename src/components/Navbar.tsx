@@ -14,33 +14,32 @@ export default function HomeNav() {
 
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-    
+
     return (
-        <Navbar isBordered maxWidth="full" onMenuOpenChange={setIsMenuOpen}>
+        <Navbar height={"5rem"} isBordered maxWidth="full" onMenuOpenChange={setIsMenuOpen}>
             <NavbarContent>
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                     className="sm:hidden"
                 />
                 <NavbarBrand>
-                    <Logo />
-                    <p className="font-bold text-4xl text-inherit">WHEEL</p>
+                    <Logo></Logo>
                 </NavbarBrand>
             </NavbarContent>
 
             <NavbarContent className="hidden sm:flex gap-11" justify="center">
                 <NavbarItem>
-                    <Link color="foreground" className="text-xl" href="/">
+                    <Link color="foreground" className="text-xl hover:text-blue-400" href="/">
                         Home
                     </Link>
                 </NavbarItem>
-                <NavbarItem isActive>
-                    <Link href="#" className="text-xl" aria-current="page">
+                <NavbarItem>
+                    <Link color="foreground" href="#" className="text-xl hover:text-purple-400" aria-current="page">
                         About Us
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link color="foreground" className="text-xl" href="/dashboards/my-wheel">
+                    <Link color="foreground" className="text-xl hover:text-purple-400" href="/dashboards/my-wheel">
                         Dashboard
                     </Link>
                 </NavbarItem>
@@ -54,7 +53,7 @@ export default function HomeNav() {
                             <Link className="text-xl" href="/sign-in">Login</Link>
                         </NavbarItem>
                         <NavbarItem>
-                            <Button className="text-xl" as={Link} color="primary" href="/sign-up" variant="flat">
+                            <Button className="text-xl" as={Link} color="secondary" href="/sign-up" variant="flat">
                                 Sign Up
                             </Button>
                         </NavbarItem>
@@ -77,17 +76,17 @@ export default function HomeNav() {
                 <NavbarMenuItem>
                     <Link color="foreground" className="text-xl" href="/">
                         Home
-                    </Link>                
+                    </Link>
                 </NavbarMenuItem>
                 <NavbarMenuItem>
                     <Link color="foreground" className="text-xl" href="/about-us">
                         About Us
-                    </Link>                
+                    </Link>
                 </NavbarMenuItem>
                 <NavbarMenuItem>
                     <Link color="foreground" className="text-xl" href="/dashboards/my-wheel">
                         Dashboards
-                    </Link>                
+                    </Link>
                 </NavbarMenuItem>
             </NavbarMenu>
         </Navbar >
