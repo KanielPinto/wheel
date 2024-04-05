@@ -146,8 +146,7 @@ export default function RiskForm() {
                                         <option value='36-40'>36-40</option>
                                         <option value='41-45'>41-45</option>
                                         <option value='46-50'>46-50</option>
-                                        <option value='51-55'>51-55</option>
-                                        <option value='56-60'>56-60</option>
+                                        <option value='51+'>51+</option>
                                     </select>
                                     {errors.ageGroup?.message && (
                                         <p className='mt-2 text-lg text-red-400'>
@@ -168,12 +167,12 @@ export default function RiskForm() {
                                         {...register('employmentType')}
                                         className='block w-full  bg-black rounded-md border-0 p-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:max-w-xs sm:text-lg sm:leading-6'
                                     >
-                                        <option value='Full-time'>Full-time</option>
-                                        <option value='Part-time'>Part-time</option>
-                                        <option value='Self-employed'>Self-employed</option>
+                                        <option value='Self-employed'>Self Employed</option>
                                         <option value='Unemployed'>Unemployed</option>
                                         <option value='Student'>Student</option>
-                                        <option value='Retired'>Retired</option>
+                                        <option value='Business'>Business</option>
+                                        <option value='Govt.'>Govt.</option>
+                                        <option value='Salaried'>Salaried</option>
                                     </select>
                                     {errors.employmentType?.message && (
                                         <p className='mt-2 text-lg text-red-400'>
@@ -194,10 +193,11 @@ export default function RiskForm() {
                                         {...register('dependents')}
                                         className='block w-full  bg-black rounded-md border-0 p-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:max-w-xs sm:text-lg sm:leading-6'
                                     >
-                                        <option value='None'>None</option>
+                                        <option value='0'>None</option>
                                         <option value='1'>1</option>
                                         <option value='2'>2</option>
-                                        <option value='3 or more'>3 or more</option>
+                                        <option value='3'>3</option>
+                                        <option value='4+'>4 or more</option>
                                     </select>
                                     {errors.dependents?.message && (
                                         <p className='mt-2 text-lg text-red-400'>
@@ -218,10 +218,11 @@ export default function RiskForm() {
                                         {...register('monthlyInvestmentAmount')}
                                         className='block w-full  bg-black rounded-md border-0 p-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:max-w-xs sm:text-lg sm:leading-6'
                                     >
-                                        <option value='Less than $100'>Less than $100</option>
-                                        <option value='$100 - $500'>$100 - $500</option>
-                                        <option value='$501 - $1000'>$501 - $1000</option>
-                                        <option value='More than $1000'>More than $1000</option>
+                                        <option value='5000 - 25000'>5000 - 25000</option>
+                                        <option value='25001 - 50000'>25001 - 50000</option>
+                                        <option value='50001 - 100000'>50001 - 100000</option>
+                                        <option value='100001 - 150000'>100001 - 150000</option>
+                                        <option value='150000+'>150000+</option>
                                     </select>
                                     {errors.monthlyInvestmentAmount?.message && (
                                         <p className='mt-2 text-lg text-red-400'>
@@ -384,7 +385,7 @@ export default function RiskForm() {
                                         <option value='5%'>5%</option>
                                         <option value='10%'>10%</option>
                                         <option value='15%'>15%</option>
-                                        <option value='20% or more'>20% or more</option>
+                                        <option value='20%'>20%</option>
                                     </select>
                                     {errors.marketCorrectionTolerance?.message && (
                                         <p className='mt-2 text-lg text-red-400'>
@@ -405,7 +406,8 @@ export default function RiskForm() {
                                         {...register('investmentHorizon')}
                                         className='block w-full  bg-black rounded-md border-0 p-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:max-w-xs sm:text-lg sm:leading-6'
                                     >
-                                        <option value='Less than 3 years'>Less than 3 years</option>
+                                        <option value='Less than 1 year'>Less than 1 year</option>
+                                        <option value='1-3 years'>1-3 years</option>
                                         <option value='3-5 years'>3-5 years</option>
                                         <option value='6-10 years'>6-10 years</option>
                                         <option value='More than 10 years'>More than 10 years</option>

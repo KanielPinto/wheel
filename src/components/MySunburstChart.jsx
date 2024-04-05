@@ -37,7 +37,6 @@ export default function Chart({ data, amount }) {
           data={data}
           onClick={(node) => {
             chartRef.current.focusOnNode(node);
-            console.log(node);
           }}
         />
       ) : (

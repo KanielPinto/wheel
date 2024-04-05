@@ -140,7 +140,6 @@ export default function MyWheel() {
                         }
                     ]
                 })
-                console.log(myportfolio)
             })
         }
 
