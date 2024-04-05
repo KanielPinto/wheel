@@ -30,8 +30,8 @@ export default function Chart({ data, amount }) {
           label="name"
           size="value"
           color="color" 
-          centerRadius={0.2}
-          radiusScaleExponent={0.9}
+          centerRadius={0.3}
+          radiusScaleExponent={1}
           // transitionDuration={800}
           tooltipContent={(d, node) => `${(node.value/100)*amount}`}
           data={data}

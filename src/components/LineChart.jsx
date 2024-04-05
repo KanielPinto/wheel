@@ -36,7 +36,7 @@ function LineChart({ data, data2, data3, dataSetTitle, xKey, yKey }) {
             },
             title: {
                 display: true,
-                text: "",
+                text: "Historical Performance Comparison",
             },
             tooltip: {
                 mode: 'index',
@@ -73,14 +73,14 @@ function LineChart({ data, data2, data3, dataSetTitle, xKey, yKey }) {
                 pointRadius: 2
             },
             {
-                label: "Nifty",
+                label: "Nifty 50",
                 data: data2.map(item => item[yKey]),
                 borderColor: '#5CE1E6',
                 backgroundColor: 'rgba(92, 225, 230, 0.5)',
                 pointRadius: 2,
             },
             {
-                label: "FD/Liquid Fund",
+                label: "FD / Liquid Fund",
                 data: data3.map(item => item[yKey]),
                 borderColor: '#FF66C4',
                 backgroundColor: 'rgba(255, 102, 196, 0.5)',

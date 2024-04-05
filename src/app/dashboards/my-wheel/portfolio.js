@@ -1,5 +1,5 @@
 const mydata = {
-  "name": "assets",
+  "name": "Assets",
   "children": [
     {
       "name": "Others",
@@ -40,17 +40,50 @@ const mydata = {
         {
           "name": "Midcap",
           "color": "#4da6ff75",
-          "value": 20
+          "children": [
+            {
+              "name": "HDFC Largecap Fund",
+              "color": "#ff4d4d75",
+              "value": 5
+            },
+            {
+              "name": "Axis Emerging Equities",
+              "color": "#4da6ff75",
+              "value": 10
+            }
+          ]
         },
         {
           "name": "Smallcap",
           "color": "#ff4d4d75",
-          "value": 20
+          "children": [
+            {
+              "name": "HDFC Largecap Fund",
+              "color": "#ff4d4d75",
+              "value": 15
+            },
+            {
+              "name": "Axis Emerging Equities",
+              "color": "#4da6ff75",
+              "value": 15
+            }
+          ]
         },
         {
           "name": "Index",
           "color": "#944dff75",
-          "value": 10
+          "children": [
+            {
+              "name": "HDFC Largecap Fund",
+              "color": "#ff4d4d75",
+              "value": 5
+            },
+            {
+              "name": "Axis Emerging Equities",
+              "color": "#4da6ff75",
+              "value": 5
+            }
+          ]
         }
       ]
     }
