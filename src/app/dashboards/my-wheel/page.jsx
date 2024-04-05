@@ -3,6 +3,8 @@ import LineChart from "@/components/LineChart";
 import MySunburstChart from "@/components/MySunburstChart";
 import { useEffect, useState } from "react";
 import mydata from "./portfolio";
+import PriceSlider from "@/components/PriceSlider";
+import 'chartjs-adapter-moment';
 
 export default function MyWheel() {
 
@@ -12,22 +14,29 @@ export default function MyWheel() {
 
     // Only fetch on load
     useEffect(() => {
-        fetch("http://localhost:5000/portfolio/past", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                "uid": "user_2edN07fAM9ljMfoioKB0pVhPZVS",
-                "years": 1
-            })
-        }).then(async res => {
-            var resjson = await res.json()
-            setPastPortfolio(resjson['portfolio'])
-            setPastNifty(resjson['benchmarks']['nifty'].reverse())
-            setPastDebt(resjson['benchmarks']['debt'].reverse())
-        })
+        async function fetchPastPortfolio() {
+            try {
+                fetch("http://localhost:5000/portfolio/past", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        "uid": "user_2edN07fAM9ljMfoioKB0pVhPZVS",
+                        "years": 1
+                    })
+                }).then(async res => {
+                    var resjson = await res.json()
+                    setPastPortfolio(resjson['portfolio'])
+                    setPastNifty(resjson['benchmarks']['nifty'].reverse())
+                    setPastDebt(resjson['benchmarks']['debt'].reverse())
+                })
+            } catch (err) {
+                console.log(err);
+            }
+        }
 
+        fetchPastPortfolio();
 
     }, [])
 

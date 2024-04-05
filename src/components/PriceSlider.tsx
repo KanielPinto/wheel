@@ -4,7 +4,7 @@ import { Slider, SliderValue, Tooltip } from "@nextui-org/react";
 
 export default function PriceSlider() {
     const [value, setValue] = React.useState<SliderValue>(1);
-    const [inputValue, setInputValue] = React.useState<string>("0=1");
+    const [inputValue, setInputValue] = React.useState<string>("1");
 
     const handleChange = (value: SliderValue) => {
         if (isNaN(Number(value))) return;
@@ -15,10 +15,10 @@ export default function PriceSlider() {
 
     return (
         <Slider
-            label="Temperature"
+            label="Investment"
             size="sm"
             showSteps
-            step={1000}
+            step={10000}
             maxValue={150000}
             minValue={0}
             color="foreground"

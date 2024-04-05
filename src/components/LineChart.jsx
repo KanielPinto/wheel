@@ -1,6 +1,5 @@
 // components/MyLineChart.tsx
 "use client";
-import 'chartjs-adapter-moment';
 import React, { useEffect, useState } from 'react'
 import {
     Chart as ChartJS,
@@ -89,7 +88,7 @@ function LineChart({ data, data2, data3, dataSetTitle, xKey, yKey }) {
     };
 
     return (
-        <div className='flex justify-center shadow-soft bg-rose-50 rounded-xl m-4 items-center self-center w-full'>
+        <div className='flex justify-center shadow-soft bg-rose-50 rounded-xl my-4 items-center self-center w-full'>
             <div className="sm:h-[50vh] h-[25vh] min-w-[30vw] p-4 w-full">
                 <Line options={lineOptions} data={formatted_data} />
             </div>
