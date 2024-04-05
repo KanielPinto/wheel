@@ -14,7 +14,7 @@ import React from 'react'
  */
 function DataGridWrapper({ rows, columns, slots = null, slotProps = null, styles = null, pageSize = 10 }) {
     return (
-        <div className={`${styles} mt-0 m-6 shadow-soft rounded-2xl`}>
+        <div className={`${styles} mt-0 m-6 shadow-soft rounded-2xl h-full`}>
             <DataGrid
                 getRowId={(row) => row.transaction_id}
                 disableRowSelectionOnClick
@@ -25,7 +25,7 @@ function DataGridWrapper({ rows, columns, slots = null, slotProps = null, styles
                     pagination: { paginationModel: { pageSize: pageSize } },
                 }}
                 pageSizeOptions={[5, 10, 25, 100]}
-                className={`!border-0 max-w-full rounded-2xl bg-white dark:bg-gray-800`}
+                className={`!border-0 max-w-full rounded-2xl bg-gray-800`}
                 rows={rows} columns={columns}
                 sx={{
                     "&.MuiDataGrid-root .MuiDataGrid-cell:focus-within": {
