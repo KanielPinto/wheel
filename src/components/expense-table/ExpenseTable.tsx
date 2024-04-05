@@ -348,7 +348,7 @@ export default function ExpenseTable() {
                     </TableColumn>
                 )}
             </TableHeader>
-            <TableBody emptyContent={"No users found"} items={sortedItems}>
+            <TableBody emptyContent={"No Transactions Found"} items={sortedItems}>
                 {(item) => (
                     <TableRow key={item.transaction_id}>
                         {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
