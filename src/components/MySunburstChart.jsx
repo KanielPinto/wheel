@@ -18,7 +18,7 @@ export default function Chart({ data, amount }) {
   }, []);
 
   return (
-    <div className="pt-6 flex font-poppins w-full justify-center items-center self-center">
+    <div className="flex font-poppins w-full justify-center items-center self-center">
       {ReactSunburst ? (
         <ReactSunburst
           nodeClassName="style"

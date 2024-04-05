@@ -12,15 +12,11 @@ import {
     Dropdown,
     DropdownMenu,
     DropdownItem,
-    Chip,
-    User,
     Pagination,
     Selection,
-    ChipProps,
     SortDescriptor
 } from "@nextui-org/react";
 import { PlusIcon } from "./PlusIcon";
-import { VerticalDotsIcon } from "./VerticalDotsIcon";
 import { ChevronDownIcon } from "./ChevronDownIcon";
 import { SearchIcon } from "./SearchIcon";
 import { columns, users } from "./data";
@@ -28,7 +24,7 @@ import { capitalize } from "./utils";
 import { useUser } from "@clerk/nextjs";
 
 
-const INITIAL_VISIBLE_COLUMNS = ["transaction_id", "beneficiary", "deposit_amt", "withdrawal_amt", "mode"];
+const INITIAL_VISIBLE_COLUMNS = ["transaction_id", "beneficiary","date", "deposit_amt", "withdrawal_amt", "mode"];
 
 
 
@@ -275,9 +271,9 @@ export default function ExpenseTable() {
                             className="bg-transparent outline-none text-default-400 text-small"
                             onChange={onRowsPerPageChange}
                         >
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="15">15</option>
+                            <option value="5">10</option>
+                            <option value="10">15</option>
+                            <option value="15">25</option>
                         </select>
                     </label>
                 </div>
@@ -294,7 +290,7 @@ export default function ExpenseTable() {
 
     const bottomContent = React.useMemo(() => {
         return (
-            <div className="m-auto py-2 md:px-2 flex justify-between items-center">
+            <div className="m-auto py-2 md:px-2 flex justify-between items-center w-full">
                 <span className="w-[30%] text-small text-default-400 hidden md:block">
                     {selectedKeys === "all"
                         ? "All items selected"

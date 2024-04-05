@@ -28,18 +28,32 @@ export default function MyWheel() {
             setPastDebt(resjson['benchmarks']['debt'].reverse())
         })
 
-        
+
     }, [])
 
     return (
         <>
             <h1 className="w-full py-4 text-3xl font-bold">My Wheel</h1>
-            <div className='flex flex-row justify-center items-center'>
-                <div className="flex flex-row w-full justify-center items-center">
-                    <MySunburstChart data={mydata} amount={150000} />
+            <div className='flex flex-col justify-center items-center'>
+                <div className="flex w-full gap-4">
+                    <div>
+                        <div className="container relative font-sans text-white">
+                            <div className="box relative flex flex-col justify-between w-fit h-fit p-20 bg-[rgba(255,255,255,0.074)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] rounded-[0.7rem] transition-all duration-300 ease-in-out">
+                                <MySunburstChart data={mydata} amount={150000} />
+
+                            </div>
+                        </div>
+                    </div>
+                    <div className="box relative flex flex-col justify-between w-full h-fit p-20 bg-[rgba(255,255,255,0.074)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] rounded-[0.7rem] transition-all duration-300 ease-in-out">
+                        <PriceSlider></PriceSlider>
+
+                    </div>
+
+
                 </div>
-                {pastPortfolio && <LineChart data={pastPortfolio} data2={pastNifty} data3={pastDebt} xKey={"date"} yKey={"nav"} dataSetTitle={"test"} />}
+
             </div>
+            {pastPortfolio && <LineChart data={pastPortfolio} data2={pastNifty} data3={pastDebt} xKey={"date"} yKey={"nav"} dataSetTitle={"test"} />}
         </>
     )
 }

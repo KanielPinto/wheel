@@ -31,8 +31,8 @@ const steps = [
 
 
 export default function RiskForm() {
-    const [previousStep, setPreviousStep] = useState(1)
-    const [currentStep, setCurrentStep] = useState(1)
+    const [previousStep, setPreviousStep] = useState(0)
+    const [currentStep, setCurrentStep] = useState(0)
     const delta = currentStep - previousStep
 
     const {
@@ -76,7 +76,7 @@ export default function RiskForm() {
     }
 
     return (
-        <section className='relative inset-0 flex flex-col w-full justify-between p-24'>
+        <section className='relative inset-0 flex flex-col w-full justify-between md:p-24 mt-7 md:mt-2 mb-10'>
             {/* steps */}
             <nav aria-label='Progress'>
                 <ol role='list' className='space-y-4 md:flex md:space-x-8 md:space-y-0'>
@@ -234,14 +234,24 @@ export default function RiskForm() {
                             {/* Attitude Towards Risk */}
                             <div className='col-span-full'>
                                 <label htmlFor='attitudeTowardsRisk' className='block text-lg font-medium leading-6 text-white'>
-                                    Please describe your attitude towards risk and return
+                                    Attitude Towards Risk
                                 </label>
                                 <div className='mt-2'>
-                                    <textarea
+                                    <select
                                         id='attitudeTowardsRisk'
                                         {...register('attitudeTowardsRisk')}
-                                        className='block w-full  bg-black rounded-md border-0 p-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-lg sm:leading-6'
-                                    />
+                                        className='block w-full bg-black rounded-md border-0 p-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:max-w-xs sm:text-lg sm:leading-6'
+                                    >
+                                        <option value='I am low risk taker, I need safety and security.'>
+                                            I am low risk taker, I need safety and security.
+                                        </option>
+                                        <option value='I am an average risk taker, can invest in risky instruments to earn a good return.'>
+                                            I am an average risk taker, can invest in risky instruments to earn a good return.
+                                        </option>
+                                        <option value='I am a high risk taker, will be happy to invest in risky instruments to earn high returns.'>
+                                            I am a high risk taker, will be happy to invest in risky instruments to earn high returns.
+                                        </option>
+                                    </select>
                                     {errors.attitudeTowardsRisk?.message && (
                                         <p className='mt-2 text-lg text-red-400'>
                                             {errors.attitudeTowardsRisk.message}
@@ -249,6 +259,7 @@ export default function RiskForm() {
                                     )}
                                 </div>
                             </div>
+
 
                         </div>
                     </motion.div>
@@ -336,14 +347,20 @@ export default function RiskForm() {
                             {/* Preferred Investment Instruments */}
                             <div className='col-span-full'>
                                 <label htmlFor='preferredInstruments' className='block text-lg font-medium leading-6 text-white'>
-                                    Preferred Investment Instruments
+                                    Preferred Instruments
                                 </label>
                                 <div className='mt-2'>
-                                    <textarea
+                                    <select
                                         id='preferredInstruments'
                                         {...register('preferredInstruments')}
-                                        className='block w-full  bg-black rounded-md border-0 p-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-lg sm:leading-6'
-                                    />
+                                        className='block w-full bg-black rounded-md border-0 p-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:max-w-xs sm:text-lg sm:leading-6'
+                                    >
+                                        <option value='Share Market'>Share Market</option>
+                                        <option value='Mutual Funds'>Mutual Funds</option>
+                                        <option value='Bonds'>Bonds</option>
+                                        <option value='Fixed Deposits'>Fixed Deposits</option>
+                                        <option value='None'>None</option>
+                                    </select>
                                     {errors.preferredInstruments?.message && (
                                         <p className='mt-2 text-lg text-red-400'>
                                             {errors.preferredInstruments.message}
@@ -351,6 +368,7 @@ export default function RiskForm() {
                                     )}
                                 </div>
                             </div>
+
 
                             {/* Market Correction Tolerance */}
                             <div className='sm:col-span-3'>
@@ -624,69 +642,69 @@ export default function RiskForm() {
 
 
             {/* Navigation */}
-<div className='mt-8 pt-5'>
-    <div className='flex justify-between'>
-        {/* Render Previous and Next buttons for steps other than the last step */}
-        {currentStep !== steps.length - 1 ? (
-            <>
-                <button
-                    type='button'
-                    onClick={prev}
-                    disabled={currentStep === 0}
-                    className='rounded bg-white px-2 py-1 text-lg font-semibold text-sky-900 shadow-sm ring-1 ring-inset ring-sky-300 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50'
-                >
-                    <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        strokeWidth='1.5'
-                        stroke='currentColor'
-                        className='h-6 w-6'
-                    >
-                        <path
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            d='M15.75 19.5L8.25 12l7.5-7.5'
-                        />
-                    </svg>
-                </button>
-                <button
-                    type='button'
-                    onClick={next}
-                    disabled={currentStep === steps.length - 1}
-                    className='rounded bg-white px-2 py-1 text-lg font-semibold text-sky-900 shadow-sm ring-1 ring-inset ring-sky-300 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50'
-                >
-                    <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        strokeWidth='1.5'
-                        stroke='currentColor'
-                        className='h-6 w-6'
-                    >
-                        <path
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            d='M8.25 4.5l7.5 7.5-7.5 7.5'
-                        />
-                    </svg>
-                </button>
-            </>
-        ) : (
-            // Render a central button for the last step
-            <button
-                type='button'
-                onClick={() => {
-                    // Redirect to another page
-                    window.location.href = '/dashboards/my-wheel';
-                }}
-                className='rounded bg-purple-600 px-4 py-2 text-lg font-semibold text-white shadow-sm ring-1 hover:bg-black transition-colors'
-            >
-                Generate Wheel
-            </button>
-        )}
-    </div>
-</div>
+            <div className='mt-4 mb-10 pt-5'>
+                <div className='flex justify-between'>
+                    {/* Render Previous and Next buttons for steps other than the last step */}
+                    {currentStep !== steps.length - 1 ? (
+                        <>
+                            <button
+                                type='button'
+                                onClick={prev}
+                                disabled={currentStep === 0}
+                                className='rounded bg-white px-2 py-1 text-lg font-semibold text-sky-900 shadow-sm ring-1 ring-inset ring-sky-300 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50'
+                            >
+                                <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    fill='none'
+                                    viewBox='0 0 24 24'
+                                    strokeWidth='1.5'
+                                    stroke='currentColor'
+                                    className='h-6 w-6'
+                                >
+                                    <path
+                                        strokeLinecap='round'
+                                        strokeLinejoin='round'
+                                        d='M15.75 19.5L8.25 12l7.5-7.5'
+                                    />
+                                </svg>
+                            </button>
+                            <button
+                                type='button'
+                                onClick={next}
+                                disabled={currentStep === steps.length - 1}
+                                className='rounded bg-white px-2 py-1 text-lg font-semibold text-sky-900 shadow-sm ring-1 ring-inset ring-sky-300 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50'
+                            >
+                                <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    fill='none'
+                                    viewBox='0 0 24 24'
+                                    strokeWidth='1.5'
+                                    stroke='currentColor'
+                                    className='h-6 w-6'
+                                >
+                                    <path
+                                        strokeLinecap='round'
+                                        strokeLinejoin='round'
+                                        d='M8.25 4.5l7.5 7.5-7.5 7.5'
+                                    />
+                                </svg>
+                            </button>
+                        </>
+                    ) : (
+                        // Render a central button for the last step
+                        <button
+                            type='button'
+                            onClick={() => {
+                                // Redirect to another page
+                                window.location.href = '/dashboards/my-wheel';
+                            }}
+                            className='rounded bg-purple-600 px-4 py-2 text-lg font-semibold text-white shadow-sm ring-1 hover:bg-black transition-colors'
+                        >
+                            Generate Wheel
+                        </button>
+                    )}
+                </div>
+            </div>
 
         </section>
     )

@@ -6,11 +6,11 @@ export const FormDataSchema = z.object({
   employmentType: z.enum(['Full-time', 'Part-time', 'Self-employed', 'Unemployed', 'Student', 'Retired']).default('Full-time'),
   dependents: z.enum(['None', '1', '2', '3 or more']).default('None'),
   monthlyInvestmentAmount: z.enum(['Less than $100', '$100 - $500', '$501 - $1000', 'More than $1000']).default('Less than $100'),
-  attitudeTowardsRisk: z.string().min(1, 'Attitude towards risk and return is required'),
+  attitudeTowardsRisk:  z.enum(['I am low risk taker, I need safety and security.', 'I am an average risk taker, can invest in risky instruments to earn a good return.', 'I am a high risk taker, will be happy to invest in risky instruments to earn high returns']).default('I am low risk taker, I need safety and security.'),
 
   // Section 2: Investment Preferences and Goals
   investmentGoals: z.array(z.enum(['Wealth accumulation', 'Retirement planning', 'Education funding', 'Short-term gains', 'Capital preservation'])).default([]),
-  preferredInstruments: z.string().min(1, 'Preferred investment instruments are required'),
+  preferredInstruments: z.enum(['Share Market', 'Mutual Funds', 'Bonds', 'Fixed Deposits', 'None']).default('None'),
   marketCorrectionTolerance: z.enum(['5%', '10%', '15%', '20% or more']).default('5%'),
   investmentHorizon: z.enum(['Less than 3 years', '3-5 years', '6-10 years', 'More than 10 years']).default('Less than 3 years'),
 
