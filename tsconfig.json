@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/navbar/Logo.jsx", "src/components/navbar/Navbar.jsx", "src/app/dashboards/expenses/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/navbar/Logo.jsx", "src/components/navbar/Navbar.jsx", "src/app/dashboards/expenses/page.jsx", "src/app/dashboards/my-wheel/page.jsx"],
   "exclude": ["node_modules"]
 }
