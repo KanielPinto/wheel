@@ -465,6 +465,16 @@ export default function RiskForm() {
                                         />
                                         <label htmlFor='lessCrowdedTrain'>A less crowded train to ensure personal space</label>
                                     </div>
+                                    <div>
+                                        <input
+                                            type='radio'
+                                            id='fasterTrain'
+                                            {...register('choiceOfTrain')}
+                                            value='Whichever come faster'
+                                            className='mr-2 text-purple-600 focus:ring-purple-600'
+                                        />
+                                        <label htmlFor='fasterTrain'>Whichever come faster</label>
+                                    </div>
                                     {errors.choiceOfTrain?.message && (
                                         <p className='mt-2 text-lg text-red-400'>
                                             {errors.choiceOfTrain.message}
@@ -484,40 +494,40 @@ export default function RiskForm() {
                                             type='radio'
                                             id='belowSpeedLimit'
                                             {...register('preferredDrivingSpeed')}
-                                            value='Below the speed limit'
+                                            value='Below 40 km/h'
                                             className='mr-2 text-purple-600 focus:ring-purple-600'
                                         />
-                                        <label htmlFor='belowSpeedLimit'>Below the speed limit</label>
+                                        <label htmlFor='belowSpeedLimit'>Below 40 km/h</label>
                                     </div>
                                     <div>
                                         <input
                                             type='radio'
                                             id='atSpeedLimit'
                                             {...register('preferredDrivingSpeed')}
-                                            value='At the speed limit'
+                                            value='40-60 km/h'
                                             className='mr-2 text-purple-600 focus:ring-purple-600'
                                         />
-                                        <label htmlFor='atSpeedLimit'>At the speed limit</label>
+                                        <label htmlFor='atSpeedLimit'>40-60 km/h</label>
                                     </div>
                                     <div>
                                         <input
                                             type='radio'
                                             id='slightlyAboveSpeedLimit'
                                             {...register('preferredDrivingSpeed')}
-                                            value='Slightly above the speed limit'
+                                            value='60-80 km/h'
                                             className='mr-2 text-purple-600 focus:ring-purple-600'
                                         />
-                                        <label htmlFor='slightlyAboveSpeedLimit'>Slightly above the speed limit</label>
+                                        <label htmlFor='slightlyAboveSpeedLimit'>60-80 km/h</label>
                                     </div>
                                     <div>
                                         <input
                                             type='radio'
                                             id='significantlyAboveSpeedLimit'
                                             {...register('preferredDrivingSpeed')}
-                                            value='Significantly above the speed limit'
+                                            value='Above 80 km/h'
                                             className='mr-2 text-purple-600 focus:ring-purple-600'
                                         />
-                                        <label htmlFor='significantlyAboveSpeedLimit'>Significantly above the speed limit</label>
+                                        <label htmlFor='significantlyAboveSpeedLimit'>Above 80 km/h</label>
                                     </div>
                                     {errors.preferredDrivingSpeed?.message && (
                                         <p className='mt-2 text-lg text-red-400'>

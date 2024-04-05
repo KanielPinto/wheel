@@ -15,8 +15,8 @@ export const FormDataSchema = z.object({
   investmentHorizon: z.enum(['Less than 1 year', '1-3 years', '3-5 years', '6-10 years', 'More than 10 years']).default('Less than 1 year'),
 
   // Section 3: Risk Assessment Scenarios
-  choiceOfTrain: z.enum(['The most crowded train to reach faster', 'A less crowded train to ensure personal space']).default('The most crowded train to reach faster'),
-  preferredDrivingSpeed: z.enum(['Below the speed limit', 'At the speed limit', 'Slightly above the speed limit', 'Significantly above the speed limit']).default('Below the speed limit'),
+  choiceOfTrain: z.enum(['The most crowded train to reach faster', 'A less crowded train to ensure personal space', 'Whichever comes faster.']).default('The most crowded train to reach faster'),
+  preferredDrivingSpeed: z.enum(['Below 40 km/h', '40-60 km/h', '60-80 km/h', 'Above 80 km/h']).default('Below 40 km/h'),
   portfolioRecoveryTime: z.enum(['Immediately sell to limit losses', 'Wait for a short period (1-3 months)', 'Wait for a moderate period (4-12 months)', 'Wait for an extended period (more than 1 year)']).default('Immediately sell to limit losses'),
   preferredPortfolioStrategy: z.enum(['Aggressive (High risk, high potential return)', 'Moderate (Balanced risk and return)', 'Conservative (Low risk, low potential return)']).default('Aggressive (High risk, high potential return)')
 });

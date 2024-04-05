@@ -21,17 +21,6 @@ function ExpenseTracker() {
 
 
         </div>
-
-        //     {transactions && <DataGridWrapper columns={columns} rows={transactions['result']} slots={{ toolbar: CustomTableToolbar }} slotProps={{
-        //         toolbar: {
-        //             buttons: [
-        //                 // Need to go to a form kinda page to create a new manual transaction 
-        //                 { title: "Add Transaction", link: "/transactions/new" },
-        //             ]
-        //         }
-        //     }}   ></DataGridWrapper>}
-
-        // </div>
     )
 }
 

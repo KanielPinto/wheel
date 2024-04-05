@@ -1,11 +1,10 @@
 import type { Config } from "tailwindcss";
 import { nextui } from "@nextui-org/react";
 
-
+const svgToDataUri = require("mini-svg-data-uri");
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
-
 
 const config: Config = {
   content: [
@@ -18,6 +17,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        "annapurna": ['Annapurna SIL', 'serif'],
+        "inter": ['Inter', 'sans-serif'] 
+ 
+      },
       animation: {
         first: "moveVertical 30s ease infinite",
         second: "moveInCircle 20s reverse infinite",
@@ -74,7 +78,19 @@ const config: Config = {
   require('@tailwindcss/forms')({
     strategy: 'class' // only generate classes
   }),
-    addVariablesForColors
+    addVariablesForColors,
+  function ({ matchUtilities, theme }: any) {
+    matchUtilities(
+      {
+        "bg-dot-thick": (value: any) => ({
+          backgroundImage: `url("${svgToDataUri(
+            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none"><circle fill="${value}" id="pattern-circle" cx="10" cy="10" r="2.5"></circle></svg>`
+          )}")`,
+        }),
+      },
+      { values: flattenColorPalette(theme("backgroundColor")), type: "color" }
+    );
+  },
   ],
 };
 

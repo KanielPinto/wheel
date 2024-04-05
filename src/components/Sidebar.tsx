@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useContext, createContext, useState, ReactNode, useEffect } from "react";
+import { Logo } from "./Logo";
 
 interface SidebarContextType {
     expanded: boolean;
@@ -66,14 +67,11 @@ export default function Sidebar({ children }: { children: ReactNode }) {
                     <nav className="h-full flex flex-col bg-gray-950 border-r shadow-sm">
                         <div className="p-4 pb-2 flex justify-between items-center">
                             <Link href="/" className="flex items-center hover:opacity-90">
-                                <img
-                                    src="/wheel.svg"
-                                    className={`overflow-hidden fill-white transition-all ${expanded ? "w-10" : "w-0"
-                                        }`}
-                                    alt=""
-                                />
-                                <p className={`px-2 font-semibold text-lg ${expanded ? "visible" : "hidden"
-                                    }`} >WHEEL</p>
+                                
+                                <div className={`${expanded ? "visible" : "hidden"
+                                    }`} ><Logo></Logo></div>
+                                
+
                             </Link>
 
                             <button

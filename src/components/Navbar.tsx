@@ -22,9 +22,12 @@ export default function HomeNav() {
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                     className="sm:hidden"
                 />
-                <NavbarBrand>
-                    <Logo></Logo>
-                </NavbarBrand>
+                <Link href="/">
+                    <NavbarBrand>
+                        <Logo></Logo>
+                    </NavbarBrand>
+                </Link>
+
             </NavbarContent>
 
             <NavbarContent className="hidden sm:flex gap-11" justify="center">

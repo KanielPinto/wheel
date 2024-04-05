@@ -20,9 +20,14 @@ export default function RootLayout({
       baseTheme: shadesOfPurple,
       userProfile: {
         baseTheme: shadesOfPurple,
-      } 
+      }
     }}>
       <html lang="en" className='dark'>
+        <head>
+          <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin=''></link>
+          <link href="https://fonts.googleapis.com/css2?family=Annapurna+SIL:wght@400;700&family=Inter:wght@100..900&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet"></link>
+        </head>
         <body>
           <Providers>
             {children}
