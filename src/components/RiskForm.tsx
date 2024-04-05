@@ -138,7 +138,7 @@ export default function RiskForm() {
                                     <select
                                         id='ageGroup'
                                         {...register('ageGroup')}
-                                        className='block w-full  bg-black rounded-md border-0 p-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 bg-black focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:max-w-xs sm:text-lg sm:leading-6'
+                                        className='block w-full  bg-black rounded-md border-0 p-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:max-w-xs sm:text-lg sm:leading-6'
                                     >
                                         <option value='18-25'>18-25</option>
                                         <option value='26-30'>26-30</option>

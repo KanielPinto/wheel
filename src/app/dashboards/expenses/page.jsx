@@ -6,7 +6,7 @@ import DataGridWrapper from '@/components/DataGridWrapper'
 import CustomTableToolbar from '@/components/CustomTableToolbar'
 
 
-function page() {
+function ExpenseTracker() {
 
     const { user } = useUser();
     const [transactions, setTransactions] = useState(null);
@@ -75,4 +75,4 @@ function page() {
     )
 }
 
-export default page
+export default ExpenseTracker
