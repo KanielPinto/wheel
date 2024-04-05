@@ -25,9 +25,11 @@ export const HoverEffect = ({
             )}
         >
             {items.map((item, idx) => (
-                <Link
-                    href={item?.link}
+                <a
+                    href={`//${item?.link}`}
                     key={item?.link}
+                    target="_blank" 
+                    rel="noopener noreferrer"
                     className="relative group  block p-2 h-full w-full"
                     onMouseEnter={() => setHoveredIndex(idx)}
                     onMouseLeave={() => setHoveredIndex(null)}
@@ -58,7 +60,7 @@ export const HoverEffect = ({
 
 
                     </Card>
-                </Link>
+                </a>
             ))}
         </div>
     );

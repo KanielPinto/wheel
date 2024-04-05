@@ -3,6 +3,7 @@
 import { UserButton, useAuth, useClerk, useUser } from "@clerk/nextjs";
 import { EmailAddress } from "@clerk/nextjs/server";
 import { MoreVertical, ChevronLast, ChevronFirst } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useContext, createContext, useState, ReactNode, useEffect } from "react";
@@ -66,7 +67,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
                         <div className="p-4 pb-2 flex justify-between items-center">
                             <Link href="/" className="flex items-center hover:opacity-90">
                                 <img
-                                    src="/ship-wheel.svg"
+                                    src="/wheel.svg"
                                     className={`overflow-hidden fill-white transition-all ${expanded ? "w-10" : "w-0"
                                         }`}
                                     alt=""
