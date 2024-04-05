@@ -19,7 +19,7 @@ const mydata = {
     },
     {
       "name": "Mutual Funds",
-      "color": "#cc996675",
+      "color": "#4C273E",
       "children": [
         {
           "name": "Largecap",
