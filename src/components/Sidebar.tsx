@@ -54,14 +54,14 @@ export default function Sidebar({ children }: { children: ReactNode }) {
     return (
         <SidebarContext.Provider value={{ expanded, isMobile }}>
             {isMobile ? (
-                <div className="fixed bottom-1 left-0 right-0 bg-gray-950 border-t shadow-sm">
+                <div className="fixed bottom-1 left-0 right-0 bg-gray-950 border-t shadow-sm z-50">
                     <nav className="flex justify-around my-2">
                         {children}
                         <UserButton></UserButton>
                     </nav>
                 </div>
             ) : (
-                <aside className="h-screen absolute lg:relative">
+                <aside className="h-screen absolute lg:relative z-50">
                     <nav className="h-full flex flex-col bg-gray-950 border-r shadow-sm">
                         <div className="p-4 pb-2 flex justify-between items-center">
                             <Link href="/" className="flex items-center hover:opacity-90">

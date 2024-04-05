@@ -9,8 +9,9 @@ export const HoverEffect = ({
 }: {
     items: {
         title: string;
-        description: string;
+        days_ago: string;
         link: string;
+        media_source: string;
     }[];
     className?: string;
 }) => {
@@ -50,7 +51,12 @@ export const HoverEffect = ({
                     </AnimatePresence>
                     <Card>
                         <CardTitle>{item.title}</CardTitle>
-                        <CardDescription>{item.description}</CardDescription>
+                        <p className="text-gray-300 my-3">{item.media_source}</p>
+
+                        <CardDescription>{item.days_ago}</CardDescription>
+                        
+
+
                     </Card>
                 </Link>
             ))}
