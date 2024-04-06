@@ -7,6 +7,7 @@ import { z } from 'zod'
 import { FormDataSchema } from '@/lib/risk-form-schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { useUser } from '@clerk/nextjs'
 
 type Inputs = z.infer<typeof FormDataSchema>
 
@@ -34,6 +35,7 @@ export default function RiskForm() {
     const [previousStep, setPreviousStep] = useState(0)
     const [currentStep, setCurrentStep] = useState(0)
     const delta = currentStep - previousStep
+    var { user } = useUser();
 
     const {
         register,
@@ -47,7 +49,21 @@ export default function RiskForm() {
     })
 
     const processForm: SubmitHandler<Inputs> = data => {
-        console.log(JSON.stringify(data))
+        if (user) {
+            const mydata = JSON.stringify(data)
+            var mydataJSON = JSON.parse(mydata); //change to obj
+            mydataJSON.uid = user.id; //add something
+            mydataJSON = JSON.stringify(mydataJSON); //change back to string
+
+            fetch("http://localhost:5000/risk/calculate", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: mydataJSON
+            })
+            
+        }
         reset()
     }
 
@@ -470,10 +486,10 @@ export default function RiskForm() {
                                             type='radio'
                                             id='fasterTrain'
                                             {...register('choiceOfTrain')}
-                                            value='Whichever come faster'
+                                            value='Whichever comes faster'
                                             className='mr-2 text-purple-600 focus:ring-purple-600'
                                         />
-                                        <label htmlFor='fasterTrain'>Whichever come faster</label>
+                                        <label htmlFor='fasterTrain'>Whichever comes faster</label>
                                     </div>
                                     {errors.choiceOfTrain?.message && (
                                         <p className='mt-2 text-lg text-red-400'>
