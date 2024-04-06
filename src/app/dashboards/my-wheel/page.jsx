@@ -22,6 +22,9 @@ export default function MyWheel() {
 
     const [vsNifty, setVsNifty] = useState(0)
     const [vsDebt, setVsDebt] = useState(0)
+    const [retNifty, setRetNifty] = useState(0)
+    const [retDebt, setRetDebt] = useState(0)
+    const [retPf, setRetPf] = useState(0)
 
 
 
@@ -146,6 +149,9 @@ export default function MyWheel() {
                 setPastDebt(resjson['benchmarks']['debt'].reverse())
                 setVsNifty(resjson['volatility']['vsNifty'])
                 setVsDebt(resjson['volatility']['vsDebt'])
+                setRetNifty(resjson['benchmarks']['nifty_ret'])
+                setRetDebt(resjson['benchmarks']['debt_ret'])
+                setRetPf(resjson['abs_return'])
             })
 
 
@@ -181,11 +187,14 @@ export default function MyWheel() {
                         <div className="flex h-full gap-4">
                             <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
                                 <h1>Volatility</h1>
-                                <h1 className={`${vsNifty <= 1 ? "text-green-600": "text-red-600"}`}>(vs Nifty) {vsNifty}</h1>
-                                <h1 className={`${vsDebt <= 1 ? "text-green-600": "text-red-600"}`}>(vs Debt) {vsDebt}</h1>
+                                <h1 className={`${vsNifty <= 1 ? "text-green-600" : "text-red-600"}`}>(vs Nifty) {vsNifty}</h1>
+                                <h1 className={`${vsDebt <= 10 ? "text-green-600" : "text-red-600"}`}>(vs Debt) {vsDebt}</h1>
                             </div>
                             <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
-                                <h1>Value 2</h1>
+                                <h1>Returns (Absolute)</h1>
+                                <h1 className={`${vsNifty > 0 ? "text-green-600" : "text-red-600"}`}>(Portfolio) {retPf}</h1>
+                                <h1 className={`${vsDebt > 0 ? "text-green-600" : "text-red-600"}`}>(Nifty) {retNifty}</h1>
+                                <h1 className={`${vsDebt > 0 ? "text-green-600" : "text-red-600"}`}>(Debt) {retDebt}</h1>
                             </div>
                             <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
                                 <h1>Value 3 </h1>
