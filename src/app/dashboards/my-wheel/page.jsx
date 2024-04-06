@@ -27,21 +27,6 @@ export default function MyWheel() {
         if (!isLoading && user) {
             // Fetch user.id or perform any other actions
             console.log(user.id);
-            fetch("http://localhost:5000/portfolio/past", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    "uid": user.id,
-                    "years": 1
-                })
-            }).then(async res => {
-                var resjson = await res.json()
-                setPastPortfolio(resjson['portfolio'])
-                setPastNifty(resjson['benchmarks']['nifty'].reverse())
-                setPastDebt(resjson['benchmarks']['debt'].reverse())
-            })
 
             fetch("http://localhost:5000/portfolio/", {
                 method: 'POST',
@@ -141,6 +126,24 @@ export default function MyWheel() {
                     ]
                 })
             })
+
+            fetch("http://localhost:5000/portfolio/past", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "uid": user.id,
+                    "years": 1
+                })
+            }).then(async res => {
+                var resjson = await res.json()
+                setPastPortfolio(resjson['portfolio'])
+                setPastNifty(resjson['benchmarks']['nifty'].reverse())
+                setPastDebt(resjson['benchmarks']['debt'].reverse())
+            })
+
+
         }
 
 
