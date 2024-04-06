@@ -82,7 +82,7 @@ export default function MyWheel() {
                                             "value": myportfolio['large'][0]['value']
                                         },
                                         {
-                                            "name":myportfolio['large'][0]['name'],
+                                            "name": myportfolio['large'][0]['name'],
                                             "color": "#4da6ff75",
                                             "value": myportfolio['large'][1]['value']
                                         }
@@ -161,9 +161,15 @@ export default function MyWheel() {
                         </div>
                     </div>
                     <div className="flex flex-col w-full h-full gap-4">
-                        <div className="box relative items-center self-center flex flex-col justify-between w-full h-fit p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
-                            <PriceSlider></PriceSlider>
+                        <div className="flex gap-4">
+                            <div className="box relative items-center self-center flex flex-col justify-between w-full h-fit p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
+                                <PriceSlider></PriceSlider>
+                            </div>
+                            <div className="box relative items-center self-center flex flex-col justify-between w-full h-fit p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
+                                <PriceSlider></PriceSlider>
+                            </div>
                         </div>
+
                         <div className="flex h-full gap-4">
                             <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
                                 <h1>Value 1</h1>
