@@ -57,9 +57,13 @@ function LineChart({ data, data2, data3, dataSetTitle, xKey, yKey }) {
                 },
                 ticks: {
                     maxTicksLimit: 20
-                }
+                },
+                autoskip: true,
             }
         },
+        options: {
+            spanGaps: true,
+        }
     };
 
     var formatted_data = {
@@ -70,21 +74,23 @@ function LineChart({ data, data2, data3, dataSetTitle, xKey, yKey }) {
                 data: data.map(item => item[yKey]),
                 borderColor: '#6328EB',
                 backgroundColor: 'rgba(99, 40, 235, 0.25)',
-                pointRadius: 2
+                pointRadius: 0,
+                cubicInterpolationMode: 'monotone'
             },
             {
                 label: "Nifty 50",
                 data: data2.map(item => item[yKey]),
                 borderColor: '#5CE1E6',
                 backgroundColor: 'rgba(92, 225, 230, 0.5)',
-                pointRadius: 2,
+                pointRadius: 0,
+                cubicInterpolationMode: 'monotone'
             },
             {
                 label: "FD / Liquid Fund",
                 data: data3.map(item => item[yKey]),
                 borderColor: '#FF66C4',
                 backgroundColor: 'rgba(255, 102, 196, 0.5)',
-                pointRadius: 2,
+                pointRadius: 0,
             },
         ],
     };

@@ -27,6 +27,7 @@ export default function Chart({ data, amount }) {
           height={350}
           maxLevels={2}
           excludeRoot
+          labelOrientation={"angular"}
           label="name"
           size="value"
           color="color" 
