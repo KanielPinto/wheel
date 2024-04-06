@@ -1,6 +1,7 @@
 'use client'
 
 import Sidebar, { SidebarItem } from '@/components/Sidebar';
+import { motion } from 'framer-motion';
 import { BarChart3, FileQuestion, LifeBuoy, LucideBadgeIndianRupee, Newspaper } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
@@ -18,8 +19,25 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </Sidebar>
 
             <div className="md:px-7 px-5 w-full h-screen overflow-auto">
-                {children}
+
+                <motion.div
+                    initial={{
+                        opacity: 0,
+                        y: 20,
+                    }}
+                    animate={{
+                        opacity: 1,
+                        y: [20, -5, 0],
+                    }}
+                    transition={{
+                        duration: 1.5,
+                        ease: [0.4, 0.0, 0.2, 1],
+                    }}
+                >
+                    {children}
+                </motion.div>
             </div>
+
         </main>
     );
 }

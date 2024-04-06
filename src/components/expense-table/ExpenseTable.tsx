@@ -22,6 +22,7 @@ import { SearchIcon } from "./SearchIcon";
 import { columns, users } from "./data";
 import { capitalize } from "./utils";
 import { useUser } from "@clerk/nextjs";
+import UploadForm from "../UploadForm";
 
 
 const INITIAL_VISIBLE_COLUMNS = ["transaction_id", "beneficiary","date", "deposit_amt", "withdrawal_amt", "mode"];
@@ -237,6 +238,7 @@ export default function ExpenseTable() {
                         onValueChange={onSearchChange}
                     />
                     <div className="flex gap-3">
+                        <UploadForm></UploadForm>
                         <Dropdown>
                             <DropdownTrigger className="hidden sm:flex">
                                 <Button endContent={<ChevronDownIcon className="text-small" />} variant="flat">
