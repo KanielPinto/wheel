@@ -20,6 +20,9 @@ export default function MyWheel() {
 
     const [amount, setamount] = useState(10000)
 
+    const [vsNifty, setVsNifty] = useState(0)
+    const [vsDebt, setVsDebt] = useState(0)
+
 
 
     // Only fetch on load
@@ -141,6 +144,8 @@ export default function MyWheel() {
                 setPastPortfolio(resjson['portfolio'])
                 setPastNifty(resjson['benchmarks']['nifty'].reverse())
                 setPastDebt(resjson['benchmarks']['debt'].reverse())
+                setVsNifty(resjson['volatility']['vsNifty'])
+                setVsDebt(resjson['volatility']['vsDebt'])
             })
 
 
@@ -175,7 +180,9 @@ export default function MyWheel() {
 
                         <div className="flex h-full gap-4">
                             <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
-                                <h1>Value 1</h1>
+                                <h1>Volatility</h1>
+                                <h1 className={`${vsNifty <= 1 ? "text-green-600": "text-red-600"}`}>(vs Nifty) {vsNifty}</h1>
+                                <h1 className={`${vsDebt <= 1 ? "text-green-600": "text-red-600"}`}>(vs Debt) {vsDebt}</h1>
                             </div>
                             <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
                                 <h1>Value 2</h1>
