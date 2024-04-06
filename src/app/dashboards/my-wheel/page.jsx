@@ -164,50 +164,62 @@ export default function MyWheel() {
     return (
         <>
             <h1 className="w-full py-4 text-3xl font-bold">My Wheel</h1>
-            <div className='flex flex-col justify-center items-center'>
-                <div className="flex w-full gap-4">
-                    <div>
-                        <div className="container relative font-sans text-white">
-                            <div className="box relative flex flex-col justify-between w-fit h-fit p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] hover:border-white backdrop-blur-[20px] rounded-[0.7rem] transition-all duration-300 ease-in-out">
-                                {chartData && <MySunburstChart data={chartData} amount={amount} />}
 
-                            </div>
-                        </div>
+            <div class="parent grid grid-cols-5 grid-rows-5 gap-5">
+                <div class="div1 col-span-2 row-span-2">
+                    <div class="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] hover:border-white backdrop-blur-[20px] rounded-[0.7rem] transition-all duration-300 ease-in-out">
+                        {chartData && <MySunburstChart data={chartData} amount={amount} />}
                     </div>
-                    <div className="flex flex-col w-full h-full gap-4">
-                        <div className="flex gap-4">
-                            <div className="box relative items-center self-center flex flex-col justify-between w-full h-fit p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
-                                <PriceSlider></PriceSlider>
-                            </div>
-                            <div className="box relative items-center self-center flex flex-col justify-between w-full h-fit p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
-                                <PriceSlider></PriceSlider>
-                            </div>
-                        </div>
-
-                        <div className="flex h-full gap-4">
-                            <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
-                                <h1>Volatility</h1>
-                                <h1 className={`${vsNifty <= 1 ? "text-green-600" : "text-red-600"}`}>(vs Nifty) {vsNifty}</h1>
-                                <h1 className={`${vsDebt <= 10 ? "text-green-600" : "text-red-600"}`}>(vs Debt) {vsDebt}</h1>
-                            </div>
-                            <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
-                                <h1>Returns (Absolute)</h1>
-                                <h1 className={`${vsNifty > 0 ? "text-green-600" : "text-red-600"}`}>(Portfolio) {retPf}</h1>
-                                <h1 className={`${vsDebt > 0 ? "text-green-600" : "text-red-600"}`}>(Nifty) {retNifty}</h1>
-                                <h1 className={`${vsDebt > 0 ? "text-green-600" : "text-red-600"}`}>(Debt) {retDebt}</h1>
-                            </div>
-                            <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
-                                <h1>Value 3 </h1>
-                            </div>
-                        </div>
-                    </div>
-
-
-
                 </div>
+                <div class="div2 col-span-3 row-span-2">
+                    <div class="w-full h-full">
+                        {pastPortfolio && <LineChart data={pastPortfolio} data2={pastNifty} data3={pastDebt} xKey={"date"} yKey={"nav"} dataSetTitle={"My Portfolio"} />}
+                    </div>
+                </div>
+                <div class="div3 col-span-1 row-span-1">
+                    <div class="box relative items-center self-center flex flex-col justify-between w-full h-fit p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
+                        <PriceSlider></PriceSlider>
+                    </div>
+                </div>
+                <div class="div4 col-span-2 row-span-1">
+                    <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
+                        <h1>Volatility</h1>
+                        <h1 className={`${vsNifty <= 1 ? "text-green-600" : "text-red-600"}`}>(vs Nifty) {vsNifty}</h1>
+                        <h1 className={`${vsDebt <= 10 ? "text-green-600" : "text-red-600"}`}>(vs Debt) {vsDebt}</h1>
+                    </div>
+                </div>
+                <div class="div5 col-span-2 row-span-1">
+                    <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
+                        <h1>Returns (Absolute)</h1>
+                        <h1 className={`${vsNifty > 0 ? "text-green-600" : "text-red-600"}`}>(Portfolio) {retPf}</h1>
+                        <h1 className={`${vsDebt > 0 ? "text-green-600" : "text-red-600"}`}>(Nifty) {retNifty}</h1>
+                        <h1 className={`${vsDebt > 0 ? "text-green-600" : "text-red-600"}`}>(Debt) {retDebt}</h1>
+                    </div>
+                </div>
+                <div class="div6 col-span-1 row-span-1">
+                    <div class="box relative items-center self-center flex flex-col justify-between w-full h-fit p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
+                        <PriceSlider></PriceSlider>
+                    </div>
+                </div>
+                <div class="div7 col-span-2 row-span-1">
+                    <div class="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
+                        <h1>Value 1</h1>
+                    </div>
+                </div>
+                <div class="div8 col-span-2 row-span-1">
+                    <div class="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
+                        <h1>Value 1</h1>
+                    </div>
+                </div>
+                <div class="div9 col-span-5 row-span-1">
 
+
+                    <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
+                        <h1>Value 3 </h1>
+                    </div>
+                </div>
             </div>
-            {pastPortfolio && <LineChart data={pastPortfolio} data2={pastNifty} data3={pastDebt} xKey={"date"} yKey={"nav"} dataSetTitle={"My Portfolio"} />}
+
         </>
     )
 }

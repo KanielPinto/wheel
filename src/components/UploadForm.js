@@ -1,9 +1,8 @@
 // components/UploadForm.js
 'use client'
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import { useUser } from '@clerk/nextjs';
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Checkbox, Link } from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 
 const UploadForm = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
