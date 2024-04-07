@@ -58,7 +58,7 @@ export default function MyWheel() {
             // Fetch user.id or perform any other actions
             console.log(user.id);
 
-            fetch(process.env.NEXT_PUBLIC_API_BASE_URL + "/portfolio/", {
+            fetch(process.env.NEXT_PUBLIC_API_BASE_URL + "/portfolio/past", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
