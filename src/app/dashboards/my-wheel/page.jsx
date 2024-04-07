@@ -6,6 +6,10 @@ import mydata from "./portfolio";
 import PriceSlider from "@/components/PriceSlider";
 import { useUser } from "@clerk/nextjs"
 import 'chartjs-adapter-moment';
+import { Slider, SliderValue, Tooltip } from "@nextui-org/react";
+import React from "react";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
+
 
 
 export default function MyWheel() {
@@ -26,6 +30,24 @@ export default function MyWheel() {
     const [retDebt, setRetDebt] = useState(0)
     const [retPf, setRetPf] = useState(0)
 
+    const [value, setValue] = React.useState(1);
+    const [inputValue, setInputValue] = React.useState("1");
+
+    const handleChange = (value) => {
+        if (isNaN(Number(value))) return;
+
+        setValue(value);
+        setInputValue(value.toString());
+
+        console.log(value);
+    };
+
+    const [selectedKeys, setSelectedKeys] = React.useState(new Set(["1Year"]));
+
+    const selectedValue = React.useMemo(
+        () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
+        [selectedKeys]
+    );
 
 
     // Only fetch on load
@@ -34,7 +56,7 @@ export default function MyWheel() {
             // Fetch user.id or perform any other actions
             console.log(user.id);
 
-            fetch("http://localhost:5000/portfolio/", {
+            fetch(process.env.API_BASE_URL + "/portfolio/", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -133,7 +155,7 @@ export default function MyWheel() {
                 })
             })
 
-            fetch("http://localhost:5000/portfolio/past", {
+            fetch(process.env.API_BASE_URL+"/portfolio/past", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -161,34 +183,103 @@ export default function MyWheel() {
 
     }, [isLoading, user])
 
+
+    let investmentValue = PriceSlider.value;
+
+
     return (
         <>
             <h1 className="w-full py-4 text-3xl font-bold">My Wheel</h1>
 
-            <div class="parent grid grid-cols-5 grid-rows-5 gap-5">
-                <div class="div1 col-span-2 row-span-2">
-                    <div class="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] hover:border-white backdrop-blur-[20px] rounded-[0.7rem] transition-all duration-300 ease-in-out">
+            <div className="parent grid grid-cols-5 grid-rows-3 gap-5">
+                <div className="div1 col-span-2 row-span-2">
+                    <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] hover:border-white backdrop-blur-[20px] rounded-[0.7rem] transition-all duration-300 ease-in-out">
                         {chartData && <MySunburstChart data={chartData} amount={amount} />}
                     </div>
                 </div>
-                <div class="div2 col-span-3 row-span-2">
-                    <div class="w-full h-full">
+                <div className="div2 col-span-3 row-span-2">
+                    <div className="w-full h-full">
                         {pastPortfolio && <LineChart data={pastPortfolio} data2={pastNifty} data3={pastDebt} xKey={"date"} yKey={"nav"} dataSetTitle={"My Portfolio"} />}
                     </div>
                 </div>
-                <div class="div3 col-span-1 row-span-1">
-                    <div class="box relative items-center self-center flex flex-col justify-between w-full h-fit p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
-                        <PriceSlider></PriceSlider>
+                <div className="div3 col-span-1 row-span-1">
+                    <div className="box relative  self-center flex flex-col justify-between items-stretch w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
+                        <Slider
+                            label="Investment"
+                            size="sm"
+                            step={1000}
+                            maxValue={150000}
+                            minValue={0}
+                            color="foreground"
+                            classNames={{
+                                base: "max-w-md",
+                                label: "text-medium",
+                            }}
+
+                            // we extract the default children to render the input
+                            renderValue={({ children, ...props }) => (
+                                <output {...props}>
+                                    <Tooltip
+                                        className="text-tiny text-default-500 rounded-md"
+                                        content="Press Enter to confirm"
+                                        placement="left"
+                                    >
+                                        <input
+                                            className="px-1 py-0.5 w-16 text-right text-small text-default-700 font-medium bg-default-100 outline-none transition-colors rounded-small border-medium border-transparent hover:border-primary focus:border-primary"
+                                            type="text"
+                                            aria-label="Temperature value"
+                                            value={inputValue}
+                                            onChange={(e) => {
+                                                const v = e.target.value;
+
+                                                setInputValue(v);
+                                            }}
+                                            onKeyDown={(e) => {
+                                                if (e.key === "Enter" && !isNaN(Number(inputValue))) {
+                                                    setValue(Number(inputValue));
+                                                }
+                                            }}
+                                        />
+                                    </Tooltip>
+                                </output>
+                            )}
+                            value={value}
+                            onChange={handleChange}
+                        />
+                        <Dropdown>
+                            <DropdownTrigger>
+                                <Button
+                                    variant="bordered"
+                                    className="capitalize"
+                                >
+                                    {selectedValue}
+                                </Button>
+                            </DropdownTrigger>
+                            <DropdownMenu
+                                aria-label="Single selection example"
+                                variant="flat"
+                                disallowEmptySelection
+                                selectionMode="single"
+                                selectedKeys={selectedKeys}
+                                onSelectionChange={setSelectedKeys}
+                            >
+                                <DropdownItem key="1Year">1Year</DropdownItem>
+                                <DropdownItem key="3Years">3Years</DropdownItem>
+                                <DropdownItem key="5Years">5Years</DropdownItem>
+                                
+                            </DropdownMenu>
+                        </Dropdown>
+
                     </div>
                 </div>
-                <div class="div4 col-span-2 row-span-1">
+                <div className="div4 col-span-2 row-span-1">
                     <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
                         <h1>Volatility</h1>
                         <h1 className={`${vsNifty <= 1 ? "text-green-600" : "text-red-600"}`}>(vs Nifty) {vsNifty}</h1>
                         <h1 className={`${vsDebt <= 10 ? "text-green-600" : "text-red-600"}`}>(vs Debt) {vsDebt}</h1>
                     </div>
                 </div>
-                <div class="div5 col-span-2 row-span-1">
+                <div className="div5 col-span-2 row-span-1">
                     <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
                         <h1>Returns (Absolute)</h1>
                         <h1 className={`${vsNifty > 0 ? "text-green-600" : "text-red-600"}`}>(Portfolio) {retPf}</h1>
@@ -196,28 +287,7 @@ export default function MyWheel() {
                         <h1 className={`${vsDebt > 0 ? "text-green-600" : "text-red-600"}`}>(Debt) {retDebt}</h1>
                     </div>
                 </div>
-                <div class="div6 col-span-1 row-span-1">
-                    <div class="box relative items-center self-center flex flex-col justify-between w-full h-fit p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
-                        <PriceSlider></PriceSlider>
-                    </div>
-                </div>
-                <div class="div7 col-span-2 row-span-1">
-                    <div class="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
-                        <h1>Value 1</h1>
-                    </div>
-                </div>
-                <div class="div8 col-span-2 row-span-1">
-                    <div class="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
-                        <h1>Value 1</h1>
-                    </div>
-                </div>
-                <div class="div9 col-span-5 row-span-1">
 
-
-                    <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
-                        <h1>Value 3 </h1>
-                    </div>
-                </div>
             </div>
 
         </>

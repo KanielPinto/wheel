@@ -23,6 +23,7 @@ import { columns, users } from "./data";
 import { capitalize } from "./utils";
 import { useUser } from "@clerk/nextjs";
 import UploadForm from "../UploadForm";
+import AddExpense from "./AddExpense";
 
 
 const INITIAL_VISIBLE_COLUMNS = ["transaction_id", "beneficiary","date", "deposit_amt", "withdrawal_amt", "mode"];
@@ -49,7 +50,7 @@ export default function ExpenseTable() {
         const fetchTransactions = async () => {
             if (isUserAvailable && user?.id) {
                 try {
-                    const response = await fetch(`http://localhost:5000/transactions/user_2edg2wZuPUvoeafDqOfSy0DzdPB`);
+                    const response = await fetch(process.env.API_BASE_URL+`/transactions/{$user.id}`);
                     const data = await response.json();
                     const flattened = data?.result.map((transaction: { [x: string]: any; Beneficiary: any; Category: any; Date: any; Mode: any; UPI_Handle: any; transaction_id: any; }, index: number) => ({
                         beneficiary: transaction.Beneficiary,
@@ -260,9 +261,7 @@ export default function ExpenseTable() {
                                 ))}
                             </DropdownMenu>
                         </Dropdown>
-                        <Button color="primary" endContent={<PlusIcon />}>
-                            Add New
-                        </Button>
+                        <AddExpense></AddExpense>
                     </div>
                 </div>
                 <div className="flex justify-between items-center">

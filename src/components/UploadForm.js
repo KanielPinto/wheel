@@ -23,7 +23,7 @@ const UploadForm = () => {
     formData.append('uid', user.id)
 
     try {
-      const response = await fetch(`http://localhost:5000/upload`, {
+      const response = await fetch(process.env.API_BASE_URL + `/upload`, {
         method: 'POST',
         body: formData,
       });
@@ -59,7 +59,7 @@ const UploadForm = () => {
                 <ModalHeader className="flex flex-col gap-1">Upload PDF</ModalHeader>
                 <ModalBody>
 
-                <input id="picture" type="file"  name="pdf" accept=".pdf" onChange={handleFileChange} className="flex h-10 w-full rounded-md border border-input bg-black px-3 py-2 text-sm text-gray-300 file:border-0 file:bg-transparent file:text-gray-400 file:text-sm file:font-medium"></input>
+                  <input id="picture" type="file" name="pdf" accept=".pdf" onChange={handleFileChange} className="flex h-10 w-full rounded-md border border-input bg-black px-3 py-2 text-sm text-gray-300 file:border-0 file:bg-transparent file:text-gray-400 file:text-sm file:font-medium"></input>
 
 
                 </ModalBody>

@@ -29,7 +29,7 @@ function LineChart({ data, data2, data3, dataSetTitle, xKey, yKey }) {
 
     const lineOptions = {
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         plugins: {
             legend: {
                 position: 'top',
@@ -98,7 +98,7 @@ function LineChart({ data, data2, data3, dataSetTitle, xKey, yKey }) {
     return (
         <div className='flex justify-center shadow-soft bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white transition-all duration-300 ease-in-out rounded-xl items-center self-center w-full h-full'>
             <div className=" p-4 w-full h-full">
-                <Line options={lineOptions} maintainAspectRatio data={formatted_data} />
+                <Line options={lineOptions} data={formatted_data} />
             </div>
         </div>
     )

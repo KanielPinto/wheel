@@ -55,7 +55,7 @@ export default function RiskForm() {
             mydataJSON.uid = user.id; //add something
             mydataJSON = JSON.stringify(mydataJSON); //change back to string
 
-            fetch("http://localhost:5000/risk/calculate", {
+            fetch(process.env.API_BASE_URL+"/risk/calculate", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
