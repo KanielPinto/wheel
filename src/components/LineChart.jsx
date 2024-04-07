@@ -37,7 +37,7 @@ function LineChart({ data, data2, data3, dataSetTitle, xKey, yKey, amount=100 })
                 position: 'top',
             },
             title: {
-                display: true,
+                display: false,
                 text: "Historical Performance Comparison",
             },
             tooltip: {

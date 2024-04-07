@@ -95,7 +95,7 @@ export default function MyWheel() {
                                             "value": myportfolio['large'][0]['value']
                                         },
                                         {
-                                            "name": myportfolio['large'][0]['name'],
+                                            "name": myportfolio['large'][1]['name'],
                                             "color": "#4da6ff75",
                                             "value": myportfolio['large'][1]['value']
                                         }
@@ -195,7 +195,7 @@ export default function MyWheel() {
                 <div className="div1 md:col-span-3 col-span-full md:row-span-2">
 
                 <div className="box relative flex flex-col justify-between items-center w-full h-full p-8 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
-                    <h1 className="text-2xl">Investment Wheel</h1>
+                    <h1 className="text-2xl pb-4">Investment Wheel</h1>
 
                         {chartData && <MySunburstChart data={chartData} amount={parseInt(inputValue)} />}
                         <div className="pb-0 p-4 flex self-center items-center justify-center w-full">
