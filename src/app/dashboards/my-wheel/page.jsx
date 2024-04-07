@@ -124,14 +124,14 @@ export default function MyWheel() {
                                     "color": "#ff4d4d75",
                                     "children": [
                                         {
-                                            "name": myportfolio['mdall'][0]['name'],
+                                            "name": myportfolio['small'][0]['name'],
                                             "color": "#ff4d4d75",
-                                            "value": myportfolio['mdall'][0]['value']
+                                            "value": myportfolio['small'][0]['value']
                                         },
                                         {
-                                            "name": myportfolio['mdall'][1]['name'],
+                                            "name": myportfolio['small'][1]['name'],
                                             "color": "#4da6ff75",
-                                            "value": myportfolio['mdall'][1]['value']
+                                            "value": myportfolio['small'][1]['value']
                                         }
                                     ]
                                 },
@@ -221,7 +221,7 @@ export default function MyWheel() {
                                             placement="left"
                                         >
                                             <input
-                                                className="px-1 py-0.5 w-16 text-right text-mdall text-default-700 font-medium bg-default-100 outline-none transition-colors rounded-mdall border-medium border-transparent hover:border-primary focus:border-primary"
+                                                className="px-1 py-0.5 w-16 text-right text-small text-default-700 font-medium bg-default-100 outline-none transition-colors rounded-small border-medium border-transparent hover:border-primary focus:border-primary"
                                                 type="text"
                                                 aria-label="Temperature value"
                                                 value={inputValue}
