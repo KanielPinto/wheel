@@ -55,10 +55,8 @@ export default function MyWheel() {
     // Only fetch on load
     useEffect(() => {
         if (!isLoading && user) {
-            // Fetch user.id or perform any other actions
-            console.log(user.id);
-
-            fetch(process.env.NEXT_PUBLIC_API_BASE_URL + "/portfolio/past", {
+            
+            fetch(process.env.NEXT_PUBLIC_API_BASE_URL + "/portfolio/", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -156,8 +154,6 @@ export default function MyWheel() {
                     ]
                 })
             })
-
-            console.log(selectedValue)
 
             fetch(process.env.NEXT_PUBLIC_API_BASE_URL + "/portfolio/past", {
                 method: 'POST',
