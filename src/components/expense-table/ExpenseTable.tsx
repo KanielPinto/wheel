@@ -26,7 +26,7 @@ import UploadForm from "../UploadForm";
 import AddExpense from "./AddExpense";
 
 
-const INITIAL_VISIBLE_COLUMNS = ["transaction_id", "beneficiary","date", "deposit_amt", "withdrawal_amt", "mode"];
+const INITIAL_VISIBLE_COLUMNS = ["transaction_id", "beneficiary", "date", "deposit_amt", "withdrawal_amt", "mode"];
 
 
 
@@ -50,7 +50,7 @@ export default function ExpenseTable() {
         const fetchTransactions = async () => {
             if (isUserAvailable && user?.id) {
                 try {
-                    const response = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL+`/transactions/{$user.id}`);
+                    const response = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL + `/transactions/{$user.id}`);
                     const data = await response.json();
                     const flattened = data?.result.map((transaction: { [x: string]: any; Beneficiary: any; Category: any; Date: any; Mode: any; UPI_Handle: any; transaction_id: any; }, index: number) => ({
                         beneficiary: transaction.Beneficiary,
@@ -228,7 +228,7 @@ export default function ExpenseTable() {
     const topContent = React.useMemo(() => {
         return (
             <div className="flex flex-col gap-4">
-                <div className="flex justify-between gap-3 items-end">
+                <div className="flex flex-col lg:flex-row justify-between gap-3 items-center md:items-end">
                     <Input
                         isClearable
                         className="w-full sm:max-w-[44%]"
@@ -238,7 +238,7 @@ export default function ExpenseTable() {
                         onClear={() => onClear()}
                         onValueChange={onSearchChange}
                     />
-                    <div className="flex gap-3">
+                    <div className="flex flex-col justify-center items-center align-middle md:flex-row gap-3">
                         <UploadForm></UploadForm>
                         <Dropdown>
                             <DropdownTrigger className="hidden sm:flex">

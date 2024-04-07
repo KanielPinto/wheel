@@ -9,7 +9,7 @@ export function NewsCards() {
   useEffect(() => {
     async function fetchNews() {
       try {
-        const response = await fetch("http://127.0.0.1:5000/news/");
+        const response = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL + "/news/");
         const data = await response.json();
         setNews(data);
         setIsLoading(false);

@@ -55,7 +55,7 @@ export default function MyWheel() {
     // Only fetch on load
     useEffect(() => {
         if (!isLoading && user) {
-            
+
             fetch(process.env.NEXT_PUBLIC_API_BASE_URL + "/portfolio/", {
                 method: 'POST',
                 headers: {
@@ -191,17 +191,20 @@ export default function MyWheel() {
         <>
             <h1 className="w-full py-4 text-3xl font-bold">My Wheel</h1>
 
-            <div className="parent grid grid-cols-7 grid-rows-3 gap-5 font-inter">
-                <div className="div1 md:col-span-3 col-span-full row-span-2">
-                    <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] hover:border-white backdrop-blur-[20px] rounded-[0.7rem] transition-all duration-300 ease-in-out">
+            <div className="parent grid grid-cols-7 grid-rows-2 md:grid-rows-3 gap-5 font-inter mb-20 md:mb-0">
+                <div className="div1 md:col-span-3 col-span-full md:row-span-2">
+
+                <div className="box relative flex flex-col justify-between items-center w-full h-full p-8 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
+                    <h1 className="text-2xl">Investment Wheel</h1>
+
                         {chartData && <MySunburstChart data={chartData} amount={parseInt(inputValue)} />}
                         <div className="pb-0 p-4 flex self-center items-center justify-center w-full">
                             <Slider
                                 label="Investment Amount"
-                                size="md"
-                                step={1000}
+                                size="sm"
+                                step={500}
                                 maxValue={150000}
-                                minValue={0}
+                                minValue={500}
                                 color="foreground"
                                 classNames={{
                                     base: "max-w-md",
@@ -242,10 +245,15 @@ export default function MyWheel() {
 
                     </div>
                 </div>
-                <div className="div2 md:col-span-4 col-span-full row-span-2">
+                <div className="div2 md:col-span-4 col-span-full md:row-span-2">
                     <div className="w-full h-full">
-                        <div className='flex flex-col justify-center shadow-soft bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white transition-all duration-300 ease-in-out rounded-xl items-center self-center w-full h-full'>
-                            {pastPortfolio && <LineChart amount={parseInt(inputValue)} data={pastPortfolio} data2={pastNifty} data3={pastDebt} xKey={"date"} yKey={"nav"} dataSetTitle={"My Portfolio"} />}
+                        <div className='flex flex-col justify-center p-6 shadow-soft bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white transition-all duration-300 ease-in-out rounded-xl items-center self-center w-full h-full'>
+                        <h1 className="text-2xl">Performance Comparison</h1>
+
+                            <div className="h-96 md:h-full w-full">
+                                {pastPortfolio && <LineChart amount={parseInt(inputValue)} data={pastPortfolio} data2={pastNifty} data3={pastDebt} xKey={"date"} yKey={"nav"} dataSetTitle={"My Portfolio"} />}
+
+                            </div>
                             <div className="flex flex-row font-inter justify-center align-middle">
                                 <Dropdown>
                                     <DropdownTrigger>
@@ -276,8 +284,8 @@ export default function MyWheel() {
                 </div>
                 <div className="div4 md:col-span-3 col-span-full row-span-1">
                     <div className="box relative flex flex-col justify-center items-center w-full p-8 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
-                        <h1 className="text-lg">Portfolio Volatility</h1>
-                        <div className="flex flex-row">
+                        <h1 className="text-2xl">Portfolio Volatility</h1>
+                        <div className="flex md:flex-row flex-col">
                             <Stat title={"Nifty 50"} style={`${vsNifty <= 1 ? "text-green-400" : "text-red-400"}`} value={vsNifty + "x"} />
                             <Stat title={"Debt"} style={`${vsDebt <= 10 ? "text-green-400" : "text-red-400"}`} value={vsDebt + "x"} />
                         </div>
@@ -285,7 +293,7 @@ export default function MyWheel() {
                 </div>
                 <div className="div5 md:col-span-4 col-span-full row-span-1">
                     <div className="box relative flex flex-col justify-center items-center w-full p-8 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
-                        <h1 className="text-lg">Absolute Returns</h1>
+                        <h1 className="text-2xl">Absolute Returns</h1>
                         <div className="flex md:flex-row flex-col ">
                             <Stat title={"My Portfolio"} style={`${retPf > 6 * parseInt(selectedValue.split(" ")[0]) ? retPf > 12 * parseInt(selectedValue.split(" ")[0]) ? "text-green-400" : "text-yellow-400" : "text-red-400"}`} value={retPf + "%"} />
                             <Stat title={"Nifty 50"} style={`${retNifty > 6 * parseInt(selectedValue.split(" ")[0]) ? retNifty > 12 * parseInt(selectedValue.split(" ")[0]) ? "text-green-400" : "text-yellow-400" : "text-red-400"}`} value={retNifty + "%"} />

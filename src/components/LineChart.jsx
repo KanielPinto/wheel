@@ -99,7 +99,7 @@ function LineChart({ data, data2, data3, dataSetTitle, xKey, yKey, amount=100 })
 
     return (
 
-        <div className=" p-4 w-full min-h-max">
+        <div className=" p-4 w-full h-full">
             <Line options={lineOptions} data={formatted_data} />
         </div>
     )
