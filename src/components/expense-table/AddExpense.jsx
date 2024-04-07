@@ -22,7 +22,7 @@ const AddExpense = () => {
     formData.append('uid', user.id)
 
     try {
-      const response = await fetch(process.env.API_BASE_URL + `/upload`, {
+      const response = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL + `/upload`, {
         method: 'POST',
         body: formData,
       });

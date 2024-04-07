@@ -54,3 +54,7 @@ Link{
 svg {
   overflow: visible!important;
 }
+
+canvas {
+  width: 100% !important;
+}
