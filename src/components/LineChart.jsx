@@ -25,7 +25,9 @@ ChartJS.register(
     TimeScale
 );
 
-function LineChart({ data, data2, data3, dataSetTitle, xKey, yKey }) {
+function LineChart({ data, data2, data3, dataSetTitle, xKey, yKey, amount=100 }) {
+
+    amount = amount/100
 
     const lineOptions = {
         responsive: true,
@@ -71,7 +73,7 @@ function LineChart({ data, data2, data3, dataSetTitle, xKey, yKey }) {
         datasets: [
             {
                 label: dataSetTitle,
-                data: data.map(item => item[yKey]),
+                data: data.map(item => item[yKey]*amount),
                 borderColor: '#6328EB',
                 backgroundColor: 'rgba(99, 40, 235, 0.25)',
                 pointRadius: 0,
@@ -79,7 +81,7 @@ function LineChart({ data, data2, data3, dataSetTitle, xKey, yKey }) {
             },
             {
                 label: "Nifty 50",
-                data: data2.map(item => item[yKey]),
+                data: data2.map(item => item[yKey]*amount),
                 borderColor: '#5CE1E6',
                 backgroundColor: 'rgba(92, 225, 230, 0.5)',
                 pointRadius: 0,
@@ -87,7 +89,7 @@ function LineChart({ data, data2, data3, dataSetTitle, xKey, yKey }) {
             },
             {
                 label: "FD / Liquid Fund",
-                data: data3.map(item => item[yKey]),
+                data: data3.map(item => item[yKey]*amount),
                 borderColor: '#FF66C4',
                 backgroundColor: 'rgba(255, 102, 196, 0.5)',
                 pointRadius: 0,

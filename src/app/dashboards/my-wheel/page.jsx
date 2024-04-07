@@ -249,30 +249,32 @@ export default function MyWheel() {
                 <div className="div2 md:col-span-4 col-span-full row-span-2">
                     <div className="w-full h-full">
                         <div className='flex flex-col justify-center shadow-soft bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white transition-all duration-300 ease-in-out rounded-xl items-center self-center w-full h-full'>
-                            {pastPortfolio && <LineChart data={pastPortfolio} data2={pastNifty} data3={pastDebt} xKey={"date"} yKey={"nav"} dataSetTitle={"My Portfolio"} />}
-                            <Dropdown>
-                                <DropdownTrigger>
-                                    <Button
-                                        variant="bordered"
-                                        className="capitalize"
+                            {pastPortfolio && <LineChart amount={parseInt(inputValue)} data={pastPortfolio} data2={pastNifty} data3={pastDebt} xKey={"date"} yKey={"nav"} dataSetTitle={"My Portfolio"} />}
+                            <div className="flex flex-row font-inter justify-center align-middle">
+                                <Dropdown>
+                                    <DropdownTrigger>
+                                        <Button
+                                            variant="bordered"
+                                            className="capitalize mx-2"
+                                        >
+                                            {selectedValue}
+                                            <FaAngleDown className="ml-1" />
+                                        </Button>
+                                    </DropdownTrigger>
+                                    <DropdownMenu
+                                        aria-label="Single selection example"
+                                        variant="flat"
+                                        disallowEmptySelection
+                                        selectionMode="single"
+                                        selectedKeys={selectedKeys}
+                                        onSelectionChange={setSelectedKeys}
                                     >
-                                        {selectedValue}
-                                        <FaAngleDown className="ml-1" />
-                                    </Button>
-                                </DropdownTrigger>
-                                <DropdownMenu
-                                    aria-label="Single selection example"
-                                    variant="flat"
-                                    disallowEmptySelection
-                                    selectionMode="single"
-                                    selectedKeys={selectedKeys}
-                                    onSelectionChange={setSelectedKeys}
-                                >
-                                    <DropdownItem key="1 Year">1 Year</DropdownItem>
-                                    <DropdownItem key="3 Years">3 Years</DropdownItem>
-                                    <DropdownItem key="5 Years">5 Years</DropdownItem>
-                                </DropdownMenu>
-                            </Dropdown>
+                                        <DropdownItem key="1 Year">1 Year</DropdownItem>
+                                        <DropdownItem key="3 Years">3 Years</DropdownItem>
+                                        <DropdownItem key="5 Years">5 Years</DropdownItem>
+                                    </DropdownMenu>
+                                </Dropdown>
+                            </div>
                         </div>
                     </div>
                 </div>
