@@ -57,7 +57,6 @@ const AddExpense = () => {
                 <ModalHeader className="flex flex-col gap-1">Add Transaction</ModalHeader>
                 <ModalBody>
 
-                  <Input type="text" label="Transaction-ID" id="transactionId" name="transactionId" />
                   <Input type="text" label="Beneficiary" id="beneficiary" name="beneficiary" />
                   <Input type="text" label="Category" id="category" name="category" />
                   <Input type="date" label="Date" id="transactionDate" name="transactionDate" />
