@@ -41,8 +41,8 @@ const UploadForm = () => {
   return (
     <div>
 
-      <Button onPress={onOpen} color="secondary" variant="shadow">
-        Upload Bank Statement
+      <Button className='w-full' onPress={onOpen} color="secondary" variant="shadow">
+        Upload Statement
       </Button>
 
       <Modal

@@ -3,10 +3,6 @@
 import HomeNav from "@/components/Navbar";
 import Image from "next/image";
 import '@/app/globals.css'
-import { Hero } from "@/components/Hero";
-import { MacbookScroll } from "@/components/macbook-scroll";
-import Link from "next/link";
-import { Logo } from "@/components/Logo";
 import { motion } from "framer-motion";
 import { HeroHighlight, Highlight } from "@/components/hero-highliight";
 import { ContainerScroll } from "@/components/container-scroll-animation";
@@ -91,7 +87,7 @@ export default function Home() {
                 src={`/dashboard_ss.png`}
                 alt="hero"
                 height={720}
-                width={1400}
+                width={1200}
                 className="mx-auto rounded-2xl object-cover h-full object-left-top"
                 draggable={false}
               />

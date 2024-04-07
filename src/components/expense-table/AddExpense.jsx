@@ -40,7 +40,7 @@ const AddExpense = () => {
   return (
     <div>
 
-      <Button onPress={onOpen} color="primary" endContent={<PlusIcon />}>
+      <Button className='w-full' onPress={onOpen} color="primary" endContent={<PlusIcon />}>
         Add New
       </Button>
       <Modal

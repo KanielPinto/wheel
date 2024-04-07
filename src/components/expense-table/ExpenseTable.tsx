@@ -228,7 +228,7 @@ export default function ExpenseTable() {
     const topContent = React.useMemo(() => {
         return (
             <div className="flex flex-col gap-4">
-                <div className="flex flex-col lg:flex-row justify-between gap-3 items-center md:items-end">
+                <div className="flex flex-col lg:flex-row justify-between gap-3 w-full items-center md:items-end">
                     <Input
                         isClearable
                         className="w-full sm:max-w-[44%]"
@@ -238,7 +238,7 @@ export default function ExpenseTable() {
                         onClear={() => onClear()}
                         onValueChange={onSearchChange}
                     />
-                    <div className="flex flex-col justify-center items-center align-middle md:flex-row gap-3">
+                    <div className="flex flex-row justify-center w-full items-center align-middle md:flex-row gap-3">
                         <UploadForm></UploadForm>
                         <Dropdown>
                             <DropdownTrigger className="hidden sm:flex">
@@ -287,6 +287,7 @@ export default function ExpenseTable() {
         onRowsPerPageChange,
         users.length,
         hasSearchFilter,
+        filteredItems
     ]);
 
     const bottomContent = React.useMemo(() => {

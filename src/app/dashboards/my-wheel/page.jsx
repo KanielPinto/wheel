@@ -189,7 +189,7 @@ export default function MyWheel() {
 
     return (
         <>
-            <h1 className="w-full py-4 text-3xl font-bold">My Wheel</h1>
+            <h1 className="w-full py-6 text-3xl font-bold">My Wheel</h1>
 
             <div className="parent grid grid-cols-7 grid-rows-2 md:grid-rows-3 gap-5 font-inter mb-20 md:mb-0">
                 <div className="div1 md:col-span-3 col-span-full md:row-span-2">
