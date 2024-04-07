@@ -124,14 +124,14 @@ export default function MyWheel() {
                                     "color": "#ff4d4d75",
                                     "children": [
                                         {
-                                            "name": myportfolio['small'][0]['name'],
+                                            "name": myportfolio['mdall'][0]['name'],
                                             "color": "#ff4d4d75",
-                                            "value": myportfolio['small'][0]['value']
+                                            "value": myportfolio['mdall'][0]['value']
                                         },
                                         {
-                                            "name": myportfolio['small'][1]['name'],
+                                            "name": myportfolio['mdall'][1]['name'],
                                             "color": "#4da6ff75",
-                                            "value": myportfolio['small'][1]['value']
+                                            "value": myportfolio['mdall'][1]['value']
                                         }
                                     ]
                                 },
@@ -196,13 +196,13 @@ export default function MyWheel() {
             <h1 className="w-full py-4 text-3xl font-bold">My Wheel</h1>
 
             <div className="parent grid grid-cols-7 grid-rows-3 gap-5 font-inter">
-                <div className="div1 col-span-3 row-span-2">
+                <div className="div1 md:col-span-3 col-span-full row-span-2">
                     <div className="box relative flex flex-col justify-between w-full h-full p-20 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] hover:border-white backdrop-blur-[20px] rounded-[0.7rem] transition-all duration-300 ease-in-out">
                         {chartData && <MySunburstChart data={chartData} amount={parseInt(inputValue)} />}
                         <div className="pb-0 p-4 flex self-center items-center justify-center w-full">
                             <Slider
                                 label="Investment Amount"
-                                size="sm"
+                                size="md"
                                 step={1000}
                                 maxValue={150000}
                                 minValue={0}
@@ -221,7 +221,7 @@ export default function MyWheel() {
                                             placement="left"
                                         >
                                             <input
-                                                className="px-1 py-0.5 w-16 text-right text-small text-default-700 font-medium bg-default-100 outline-none transition-colors rounded-small border-medium border-transparent hover:border-primary focus:border-primary"
+                                                className="px-1 py-0.5 w-16 text-right text-mdall text-default-700 font-medium bg-default-100 outline-none transition-colors rounded-mdall border-medium border-transparent hover:border-primary focus:border-primary"
                                                 type="text"
                                                 aria-label="Temperature value"
                                                 value={inputValue}
@@ -246,7 +246,7 @@ export default function MyWheel() {
 
                     </div>
                 </div>
-                <div className="div2 col-span-4 row-span-2">
+                <div className="div2 md:col-span-4 col-span-full row-span-2">
                     <div className="w-full h-full">
                         <div className='flex flex-col justify-center shadow-soft bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white transition-all duration-300 ease-in-out rounded-xl items-center self-center w-full h-full'>
                             {pastPortfolio && <LineChart data={pastPortfolio} data2={pastNifty} data3={pastDebt} xKey={"date"} yKey={"nav"} dataSetTitle={"My Portfolio"} />}
@@ -271,13 +271,12 @@ export default function MyWheel() {
                                     <DropdownItem key="1 Year">1 Year</DropdownItem>
                                     <DropdownItem key="3 Years">3 Years</DropdownItem>
                                     <DropdownItem key="5 Years">5 Years</DropdownItem>
-
                                 </DropdownMenu>
                             </Dropdown>
                         </div>
                     </div>
                 </div>
-                <div className="div4 col-span-3 row-span-1">
+                <div className="div4 md:col-span-3 col-span-full row-span-1">
                     <div className="box relative flex flex-col justify-center items-center w-full p-8 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
                         <h1 className="text-lg">Portfolio Volatility</h1>
                         <div className="flex flex-row">
@@ -286,10 +285,10 @@ export default function MyWheel() {
                         </div>
                     </div>
                 </div>
-                <div className="div5 col-span-4 row-span-1">
+                <div className="div5 md:col-span-4 col-span-full row-span-1">
                     <div className="box relative flex flex-col justify-center items-center w-full p-8 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
                         <h1 className="text-lg">Absolute Returns</h1>
-                        <div className="flex flex-row">
+                        <div className="flex md:flex-row flex-col ">
                             <Stat title={"My Portfolio"} style={`${retPf > 6 * parseInt(selectedValue.split(" ")[0]) ? retPf > 12 * parseInt(selectedValue.split(" ")[0]) ? "text-green-400" : "text-yellow-400" : "text-red-400"}`} value={retPf + "%"} />
                             <Stat title={"Nifty 50"} style={`${retNifty > 6 * parseInt(selectedValue.split(" ")[0]) ? retNifty > 12 * parseInt(selectedValue.split(" ")[0]) ? "text-green-400" : "text-yellow-400" : "text-red-400"}`} value={retNifty + "%"} />
                             <Stat title={"Debt"} style={`${retDebt > 6 * parseInt(selectedValue.split(" ")[0]) ? retDebt > 12 * parseInt(selectedValue.split(" ")[0]) ? "text-green-400" : "text-yellow-400" : "text-red-400"}`} value={retDebt + "%"} />
