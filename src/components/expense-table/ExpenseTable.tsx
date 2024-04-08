@@ -50,13 +50,13 @@ export default function ExpenseTable() {
         const fetchTransactions = async () => {
             if (isUserAvailable && user?.id) {
                 try {
-                    const response = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL + `/transactions/{$user.id}`);
+                    const response = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL + `/transactions/${user.id}`);
                     const data = await response.json();
                     const flattened = data?.result.map((transaction: { [x: string]: any; Beneficiary: any; Category: any; Date: any; Mode: any; UPI_Handle: any; transaction_id: any; }, index: number) => ({
                         beneficiary: transaction.Beneficiary,
                         category: transaction.Category,
                         date: transaction.Date,
-                        depositAmt: transaction["Deposit Amt."],
+                        depositAmt: transaction.amount,
                         withdrawalAmt: transaction["Withdrawal Amt."],
                         mode: transaction.Mode,
                         upiHandle: transaction.UPI_Handle,
