@@ -4,9 +4,8 @@ const columns = [
     { name: "BENEFICIARY", uid: "beneficiary", sortable: true },
     { name: "CATEGORY", uid: "category", sortable: true },
     { name: "DATE", uid: "date", sortable: true },
-    { name: "DEPOSIT-AMOUNT", uid: "deposit_amt" },
-    { name: "WITHDRAWAL-AMOUNT", uid: "withdrawal_amt" },
-
+    { name: "TRANSACTION-TYPE", uid: "transactionType" },
+    { name: "AMOUNT(INR)", uid: "amount", sortable: true },
     { name: "MODE", uid: "mode" },
     { name: "UPI-HANDLE", uid: "upi_handle", sortable: true },
 ];

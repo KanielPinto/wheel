@@ -16,7 +16,6 @@ import {
     Selection,
     SortDescriptor
 } from "@nextui-org/react";
-import { PlusIcon } from "./PlusIcon";
 import { ChevronDownIcon } from "./ChevronDownIcon";
 import { SearchIcon } from "./SearchIcon";
 import { columns, users } from "./data";
@@ -26,7 +25,7 @@ import UploadForm from "../UploadForm";
 import AddExpense from "./AddExpense";
 
 
-const INITIAL_VISIBLE_COLUMNS = ["transaction_id", "beneficiary", "date", "deposit_amt", "withdrawal_amt", "mode"];
+const INITIAL_VISIBLE_COLUMNS = ["transaction_id", "beneficiary", "date", "transactionType", "amount", "mode"];
 
 
 
@@ -52,19 +51,18 @@ export default function ExpenseTable() {
                 try {
                     const response = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL + `/transactions/${user.id}`);
                     const data = await response.json();
-                    const flattened = data?.result.map((transaction: { [x: string]: any; Beneficiary: any; Category: any; Date: any; Mode: any; UPI_Handle: any; transaction_id: any; }, index: number) => ({
+                    const flattened = data?.result.map((transaction: { [x: string]: any; Beneficiary: any; Category: any; Date: any; Mode: any; Amount: any; UPI_Handle: any; transaction_id: any; }, index: number) => ({
                         beneficiary: transaction.Beneficiary,
                         category: transaction.Category,
                         date: transaction.Date,
-                        depositAmt: transaction.amount,
-                        withdrawalAmt: transaction["Withdrawal Amt."],
+                        amount: transaction.Amount,
+                        transactionType: transaction["Transaction Type"],
                         mode: transaction.Mode,
                         upiHandle: transaction.UPI_Handle,
                         transactionId: transaction.transaction_id
                     }));
 
                     setTransactions(flattened);
-                    console.log(flattened);
                 } catch (error) {
                     console.error('Error fetching transactions:', error);
                 }
@@ -81,7 +79,7 @@ export default function ExpenseTable() {
     const [filterValue, setFilterValue] = useState("");
     const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set([]));
     const [visibleColumns, setVisibleColumns] = useState<Selection>(new Set(INITIAL_VISIBLE_COLUMNS));
-    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
     const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>({
         column: "date",
         direction: "ascending",
@@ -109,10 +107,10 @@ export default function ExpenseTable() {
         return filteredTransactions.map((transaction) => ({
             transaction_id: transaction.transactionId,
             beneficiary: transaction.beneficiary,
-            deposit_amt: transaction.depositAmt,
+            amount: transaction.amount,
             category: transaction.category,
             date: transaction.date,
-            withdrawal_amt: transaction.withdrawalAmt,
+            transactionType: transaction.transactionType,
             mode: transaction.mode,
             upi_handle: transaction.upiHandle
         }));
@@ -168,18 +166,18 @@ export default function ExpenseTable() {
                         <p className="text-bold text-tiny capitalize text-default-400">{transaction.Date}</p>
                     </div>
                 );
-            case "deposit_amt":
+            case "amount":
                 return (
                     <div className="flex flex-col">
                         <p className="text-bold text-small capitalize">{cellValue}</p>
-                        <p className="text-bold text-tiny capitalize text-default-400">{transaction["Deposit Amt."]}</p>
+                        <p className="text-bold text-tiny capitalize text-default-400">{transaction.Amount}</p>
                     </div>
                 );
-            case "withdrawal_amt":
+            case "transactionType":
                 return (
                     <div className="flex flex-col">
                         <p className="text-bold text-small capitalize">{cellValue}</p>
-                        <p className="text-bold text-tiny capitalize text-default-400">{transaction["Withdrawal Amt."]}</p>
+                        <p className="text-bold text-tiny capitalize text-default-400">{transaction["Transaction Type"]}</p>
                     </div>
                 );
             case "mode":
@@ -238,7 +236,7 @@ export default function ExpenseTable() {
                         onClear={() => onClear()}
                         onValueChange={onSearchChange}
                     />
-                    <div className="flex flex-row justify-center w-full items-center align-middle md:flex-row gap-3">
+                    <div className="flex flex-row justify-center lg:justify-end w-full items-center align-middle md:flex-row gap-3">
                         <UploadForm></UploadForm>
                         <Dropdown>
                             <DropdownTrigger className="hidden sm:flex">
@@ -272,9 +270,9 @@ export default function ExpenseTable() {
                             className="bg-transparent outline-none text-default-400 text-small"
                             onChange={onRowsPerPageChange}
                         >
-                            <option value="5">10</option>
-                            <option value="10">15</option>
-                            <option value="15">25</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="25">25</option>
                         </select>
                     </label>
                 </div>
