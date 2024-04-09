@@ -265,7 +265,7 @@ export default function MyWheel() {
                             <Tooltip content={
                                 <div className="px-1 py-2 max-w-64">
                                     <div className="text-small font-bold mb-1">What If I Invested earlier ?</div>
-                                    <p className="text-tiny mb-1">Compare the potential returns of your portfolio versus NIFTY 50 and Liquid Funds i.e. The stock market index that represents the weighted average of 50 of the largest Indian companies listed on the NSE and funds that invest in debt having almost no risk or volatility thus generating low but steady returns comparable to Bank FD's respectively.</p>
+                                    <p className="text-tiny mb-1">Compare the potential returns of your portfolio versus NIFTY 50 and Liquid Funds i.e. The stock market index that represents the weighted average of 50 of the largest Indian companies listed on the NSE and funds that invest in debt having almost no risk or volatility thus generating low but steady returns comparable to Bank FD&apos;s respectively.</p>
                                     <p className="text-tiny">The longer the timeframe - the greater the magic of compounding.</p>
                                 </div>
                             } placement="left-end">
@@ -310,7 +310,7 @@ export default function MyWheel() {
                         <Tooltip content={
                             <div className="px-1 py-2 max-w-64">
                                 <div className="text-small font-bold mb-1">Is my principal at risk ?</div>
-                                <div className="text-tiny">Volatility refers to the variability of returns associated with investments. We've compared your portfolio volatility to NIFTY 50 which is an index fund with a CAGR of around 13-15 % thus offering optimum returns for low-moderate risk. Debt on the other hand offers low risk thus yielding a low ROI.</div>
+                                <div className="text-tiny">Volatility refers to the variability of returns associated with investments. We have compared your portfolio volatility to NIFTY 50 which is an index fund with a CAGR of around 13-15 % thus offering optimum returns for low-moderate risk. Debt on the other hand offers low risk thus yielding a low ROI.</div>
                             </div>
                         } placement="left-end">
                             <InfoIcon className="absolute top-2 right-3 text-gray-400" />
