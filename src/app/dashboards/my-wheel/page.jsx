@@ -194,10 +194,10 @@ export default function MyWheel() {
                 <Button variant="ghost" color="secondary" onClick={() => {
                     // Redirect to another page
                     window.location.href = '/dashboards/risk-assessment';
-                }} className="p-5 font-semibold" startContent={<FileQuestionIcon />}>Retake Risk Assessment</Button>
+                }} className="p-5 hidden md:flex font-semibold" startContent={<FileQuestionIcon />}>Retake Risk Assessment</Button>
             </div>
 
-            <div className="parent grid grid-cols-7 grid-rows-2 md:grid-rows-3 gap-5 font-inter mb-20 md:mb-0">
+            <div className="parent grid grid-cols-7 grid-rows-2 md:grid-rows-3 gap-5 font-inter mb-5 md:mb-0">
                 <div className="div1 md:col-span-3 col-span-full md:row-span-2">
 
                     <div className="box relative flex flex-col justify-between items-center w-full h-full p-8 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
@@ -307,6 +307,14 @@ export default function MyWheel() {
                         </div>
                     </div>
                 </div>
+
+            </div>
+
+            <div className="w-full flex justify-center">
+                <Button variant="shadow" color="secondary" onClick={() => {
+                    // Redirect to another page
+                    window.location.href = '/dashboards/risk-assessment';
+                }} className="p-5 flex md:hidden mb-20 font-semibold" startContent={<FileQuestionIcon />}>Retake Risk Assessment</Button>
 
             </div>
 
