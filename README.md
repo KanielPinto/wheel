@@ -204,7 +204,7 @@ npx prisma generate
 Use the following command to run wheel:
 
 ```sh
-npm run build && node dist/main.js
+npm run build
 ```
 
 
