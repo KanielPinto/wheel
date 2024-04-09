@@ -11,7 +11,7 @@ import { Slider, SliderValue, Tooltip } from "@nextui-org/react";
 import React from "react";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import { FaAngleDown } from "react-icons/fa";
-import { FileQuestionIcon } from "lucide-react";
+import { FileQuestionIcon, MessageCircleQuestionIcon, InfoIcon } from "lucide-react";
 
 
 export default function MyWheel() {
@@ -201,6 +201,14 @@ export default function MyWheel() {
                 <div className="div1 md:col-span-3 col-span-full md:row-span-2">
 
                     <div className="box relative flex flex-col justify-between items-center w-full h-full p-8 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
+                        <Tooltip content={
+                            <div className="px-1 py-2">
+                                <div className="text-small font-bold">Insert Content Here</div>
+                                <div className="text-tiny">This is a custom tooltip content</div>
+                            </div>
+                        } placement="left-end">
+                            <InfoIcon className="absolute top-2 right-3 text-gray-400" />
+                        </Tooltip>
                         <h1 className="text-2xl pb-4">Investment Wheel</h1>
 
                         {chartData && <MySunburstChart data={chartData} amount={parseInt(inputValue)} />}
@@ -254,6 +262,14 @@ export default function MyWheel() {
                 <div className="div2 md:col-span-4 col-span-full md:row-span-2">
                     <div className="w-full h-full">
                         <div className='flex flex-col justify-center p-6 shadow-soft bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white transition-all duration-300 ease-in-out rounded-xl items-center self-center w-full h-full'>
+                            <Tooltip content={
+                                <div className="px-1 py-2">
+                                    <div className="text-small font-bold">Insert Content Here</div>
+                                    <div className="text-tiny">This is a custom tooltip content</div>
+                                </div>
+                            } placement="left-end">
+                                <InfoIcon className="absolute top-2 right-3 text-gray-400" />
+                            </Tooltip>
                             <h1 className="text-2xl">Performance Comparison</h1>
 
                             <div className="h-96 md:h-full w-full">
@@ -290,6 +306,14 @@ export default function MyWheel() {
                 </div>
                 <div className="div4 md:col-span-3 col-span-full row-span-1">
                     <div className="box relative flex flex-col justify-center items-center w-full p-8 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
+                        <Tooltip content={
+                            <div className="px-1 py-2">
+                                <div className="text-small font-bold">Insert Content Here</div>
+                                <div className="text-tiny">This is a custom tooltip content</div>
+                            </div>
+                        } placement="left-end">
+                            <InfoIcon className="absolute top-2 right-3 text-gray-400" />
+                        </Tooltip>
                         <h1 className="text-2xl">Portfolio Volatility</h1>
                         <div className="flex md:flex-row flex-col">
                             <Stat title={"Nifty 50"} style={`${vsNifty <= 1 ? "text-green-400" : "text-red-400"}`} value={vsNifty + "x"} />
@@ -299,6 +323,14 @@ export default function MyWheel() {
                 </div>
                 <div className="div5 md:col-span-4 col-span-full row-span-1">
                     <div className="box relative flex flex-col justify-center items-center w-full p-8 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
+                        <Tooltip content={
+                            <div className="px-1 py-2">
+                                <div className="text-small font-bold">Insert Content Here</div>
+                                <div className="text-tiny">This is a custom tooltip content</div>
+                            </div>
+                        } placement="left-end">
+                            <InfoIcon className="absolute top-2 right-3 text-gray-400" />
+                        </Tooltip>
                         <h1 className="text-2xl">Absolute Returns</h1>
                         <div className="flex md:flex-row flex-col ">
                             <Stat title={"My Portfolio"} style={`${retPf > 6 * parseInt(selectedValue.split(" ")[0]) ? retPf > 12 * parseInt(selectedValue.split(" ")[0]) ? "text-green-400" : "text-yellow-400" : "text-red-400"}`} value={retPf + "%"} />

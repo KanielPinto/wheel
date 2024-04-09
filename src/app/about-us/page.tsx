@@ -1,6 +1,6 @@
 import HomeNav from "@/components/Navbar"
 
-export default function About() {
+export default function Page() {
     return (
         <>
             <HomeNav></HomeNav>

@@ -37,7 +37,7 @@ export default function HomeNav() {
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link color="foreground" href="#" className="text-xl hover:text-purple-400" aria-current="page">
+                    <Link color="foreground" href="/about-us" className="text-xl hover:text-purple-400" aria-current="page">
                         About Us
                     </Link>
                 </NavbarItem>
