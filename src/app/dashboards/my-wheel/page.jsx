@@ -202,9 +202,9 @@ export default function MyWheel() {
 
                     <div className="box relative flex flex-col justify-between items-center w-full h-full p-8 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
                         <Tooltip content={
-                            <div className="px-1 py-2">
-                                <div className="text-small font-bold">Insert Content Here</div>
-                                <div className="text-tiny">This is a custom tooltip content</div>
+                            <div className="px-1 py-2 max-w-64">
+                                <div className="text-small font-bold mb-1">Where should I invest ?</div>
+                                <div className="text-tiny">This wheel suggests in what asset classes you should invest and what amount as well. It picks the top performing mutual funds in each category by market cap.</div>
                             </div>
                         } placement="left-end">
                             <InfoIcon className="absolute top-2 right-3 text-gray-400" />
@@ -263,9 +263,10 @@ export default function MyWheel() {
                     <div className="w-full h-full">
                         <div className='flex flex-col justify-center p-6 shadow-soft bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white transition-all duration-300 ease-in-out rounded-xl items-center self-center w-full h-full'>
                             <Tooltip content={
-                                <div className="px-1 py-2">
-                                    <div className="text-small font-bold">Insert Content Here</div>
-                                    <div className="text-tiny">This is a custom tooltip content</div>
+                                <div className="px-1 py-2 max-w-64">
+                                    <div className="text-small font-bold mb-1">What If I Invested earlier ?</div>
+                                    <p className="text-tiny mb-1">Compare the potential returns of your portfolio versus NIFTY 50 and Liquid Funds i.e. The stock market index that represents the weighted average of 50 of the largest Indian companies listed on the NSE and funds that invest in debt having almost no risk or volatility thus generating low but steady returns comparable to Bank FD's respectively.</p>
+                                    <p className="text-tiny">The longer the timeframe - the greater the magic of compounding.</p>
                                 </div>
                             } placement="left-end">
                                 <InfoIcon className="absolute top-2 right-3 text-gray-400" />
@@ -307,9 +308,9 @@ export default function MyWheel() {
                 <div className="div4 md:col-span-3 col-span-full row-span-1">
                     <div className="box relative flex flex-col justify-center items-center w-full p-8 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
                         <Tooltip content={
-                            <div className="px-1 py-2">
-                                <div className="text-small font-bold">Insert Content Here</div>
-                                <div className="text-tiny">This is a custom tooltip content</div>
+                            <div className="px-1 py-2 max-w-64">
+                                <div className="text-small font-bold mb-1">Is my principal at risk ?</div>
+                                <div className="text-tiny">Volatility refers to the variability of returns associated with investments. We've compared your portfolio volatility to NIFTY 50 which is an index fund with a CAGR of around 13-15 % thus offering optimum returns for low-moderate risk. Debt on the other hand offers low risk thus yielding a low ROI.</div>
                             </div>
                         } placement="left-end">
                             <InfoIcon className="absolute top-2 right-3 text-gray-400" />
@@ -324,9 +325,9 @@ export default function MyWheel() {
                 <div className="div5 md:col-span-4 col-span-full row-span-1">
                     <div className="box relative flex flex-col justify-center items-center w-full p-8 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
                         <Tooltip content={
-                            <div className="px-1 py-2">
-                                <div className="text-small font-bold">Insert Content Here</div>
-                                <div className="text-tiny">This is a custom tooltip content</div>
+                            <div className="px-1 py-2 max-w-64">
+                                <div className="text-small font-bold mb-1">How much money would I earn ?</div>
+                                <div className="text-tiny">These metrics simply display the returns generated over your chosen period of time. This along with volatility gives an idea of how much reward you earned for taking a unit of risk.</div>
                             </div>
                         } placement="left-end">
                             <InfoIcon className="absolute top-2 right-3 text-gray-400" />
