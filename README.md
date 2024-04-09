@@ -36,12 +36,9 @@
 > - [📍 Overview](#-overview)
 > - [📦 Features](#-features)
 > - [📂 Repository Structure](#-repository-structure)
-> - [🧩 Modules](#-modules)
 > - [🚀 Getting Started](#-getting-started)
 >   - [⚙️ Installation](#️-installation)
 >   - [🤖 Running wheel](#-running-wheel)
->   - [🧪 Tests](#-tests)
-> - [🛠 Project Roadmap](#-project-roadmap)
 > - [👏 Acknowledgments](#-acknowledgments)
 
 ---
