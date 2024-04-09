@@ -11,7 +11,7 @@ export default function Page() {
                 <div className="flex h-screen gap-2 w-full justify-center items-center flex-col">
                     <ClerkLoading>
                         <Spinner size="lg" color="secondary" />
-                        <div>Clerk is loading...</div>
+                        <div>Loading...</div>
                     </ClerkLoading>
                     <SignIn></SignIn>
                     <div className="text-left py-2">

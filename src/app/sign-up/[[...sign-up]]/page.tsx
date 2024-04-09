@@ -9,7 +9,7 @@ export default function Page() {
             <div className="flex flex-col gap-2 h-screen w-full justify-center items-center">
                 <ClerkLoading>
                     <Spinner size="lg" color="secondary" />
-                    <div>Clerk is loading...</div>
+                    <div>Loading...</div>
                 </ClerkLoading>
                 <SignUp />
             </div>
