@@ -29,7 +29,9 @@ const UploadForm = () => {
       });
 
       if (response.ok) {
-        // router.push('/success'); // Redirect to a success page
+        setTimeout(() => {
+          window.location.reload();
+      }, 5000);
       } else {
         console.error('Failed to upload PDF');
       }

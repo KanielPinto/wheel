@@ -25,7 +25,7 @@ import UploadForm from "../UploadForm";
 import AddExpense from "./AddExpense";
 
 
-const INITIAL_VISIBLE_COLUMNS = ["transaction_id", "beneficiary", "date", "transactionType", "amount", "mode"];
+const INITIAL_VISIBLE_COLUMNS = ["transaction_id", "beneficiary","category", "date", "transactionType", "amount", "mode"];
 
 
 
