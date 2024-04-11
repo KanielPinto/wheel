@@ -6,6 +6,8 @@ import { useUser } from "@clerk/nextjs"
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import { FaAngleDown } from "react-icons/fa";
 import ExpensesBarGraph from '@/components/expenses-bar-graph';
+import CustomLegend from '@/components/CustomLegend';
+
 
 function ExpenseTracker() {
     const data = [1200, 1500, 800, 900, 1100, 1400];
@@ -178,22 +180,26 @@ function ExpenseTracker() {
 
             <div className='flex flex-col gap-8'>
                 <div className='flex flex-col lg:flex-row gap-8 px-10'>
-                    <div className='flex flex-col justify-center p-6 shadow-soft bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white transition-all duration-300 ease-in-out rounded-xl items-center self-center w-full h-full'>
+                    <div className="flex flex-col shadow-soft bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white p-6 transition-all duration-100 ease-in-out rounded-xl justify-center items-center self-center align-middle w-full h-full">
                         <h1 className="text-2xl">Expense Modes</h1>
+                        <div className='flex flex-col p-2 justify-center sm:flex-row '>
+                            <div className='w-96'>
+                                <ExpenseCategoryChart data={modeCount?.map((data) => data['count'])} labels={modeCount?.map((data) => data['_id']['mode'])} title="" />
 
-                        <div className='w-96'>
-                            <ExpenseCategoryChart data={modeCount?.map((data) => data['count'])} labels={modeCount?.map((data) => data['_id']['mode'])} title="" />
+                            </div>
+                            {modeCount && <CustomLegend items={modeCount} label={"mode"} className={'w-[50%] self-center align-middle'} />}
 
                         </div>
-
-
                     </div>
-                    <div className='flex flex-col justify-center p-6 shadow-soft bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white transition-all duration-300 ease-in-out rounded-xl items-center self-center w-full h-full'>
+
+                    <div className="flex flex-col shadow-soft bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white p-6 transition-all duration-100 ease-in-out rounded-xl justify-center items-center self-center align-middle w-full h-full">
                         <h1 className="text-2xl">Expense Categories</h1>
+                        <div className='flex flex-col p-2 justify-center sm:flex-row '>
+                            <div className='w-96'>
+                                <ExpenseCategoryChart data={categoryCount?.map((data) => data['count'])} labels={categoryCount?.map((data) => data['_id']['category'])} title="" />
 
-                        <div className='w-96'>
-                            <ExpenseCategoryChart data={categoryCount?.map((data) => data['count'])} labels={categoryCount?.map((data) => data['_id']['category'])} title="" />
-
+                            </div>
+                            {modeCount && <CustomLegend items={categoryCount} label={"category"} className={'w-[50%] self-center align-middle'} />}
                         </div>
                     </div>
                 </div>
@@ -202,7 +208,7 @@ function ExpenseTracker() {
                     <div className='flex flex-col justify-center p-6 shadow-soft bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white transition-all duration-300 ease-in-out rounded-xl items-center self-center w-full h-full'>
                         <h1 className="text-2xl">Top Expenses</h1>
 
-                        <div className='w-full'>
+                        <div className='w-full p-2'>
                             <ExpensesBarGraph data={highestExpense?.map((data) => data['Amount'])} labels={highestExpense?.map((data) => data['Beneficiary'])} />
                         </div>
 
@@ -211,7 +217,7 @@ function ExpenseTracker() {
                     <div className='flex flex-col justify-center p-6 shadow-soft bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white transition-all duration-300 ease-in-out rounded-xl items-center self-center w-full h-full'>
                         <h1 className="text-2xl">Top Incoming</h1>
 
-                        <div className='w-full'>
+                        <div className='w-full p-2'>
                             <ExpensesBarGraph data={highestIncome?.map((data) => data['Amount'])} labels={highestIncome?.map((data) => data['Beneficiary'])} />
 
                         </div>

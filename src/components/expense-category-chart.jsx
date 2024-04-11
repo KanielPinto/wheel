@@ -31,6 +31,14 @@ const ExpenseCategoryChart = ({ data, labels, title }) => {
           '#98b5ef',
           '#a7c3f2',
         ],
+        borderColor: [
+          '#38B6FF',
+          '#FF66C4',
+          '#6328EB',
+          '#6085E9',
+          '#9C8EE2',
+          '#a7c3f2',
+        ],
       },
     ],
   };
@@ -41,7 +49,11 @@ const ExpenseCategoryChart = ({ data, labels, title }) => {
         display: true,
         text: title,
       },
+      legend: {
+        display: false
+      },
     },
+
   };
 
   return <Pie data={chartData} options={options} />;
