@@ -5,6 +5,8 @@ import { Providers } from '@/app/providers'
 import { dark, shadesOfPurple } from '@clerk/themes';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Navbar } from '@nextui-org/react';
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import {NextUIProvider} from '@nextui-org/react'
 
 export const metadata: Metadata = {
   title: "Wheel",
@@ -34,7 +36,7 @@ export default function RootLayout({
         </head>
         <body>
           <Providers>
-              {children}
+            {children}
           </Providers>
           <SpeedInsights />
 

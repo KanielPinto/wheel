@@ -190,14 +190,14 @@ export default function MyWheel() {
     return (
         <>
             <div className="flex w-full justify-between items-center">
-                <h1 className="w-full py-6 text-3xl font-bold">My Wheel</h1>
+                <h1 className="w-full py-6 text-3xl font-semibold font-sans">My Wheel</h1>
                 <Button variant="ghost" color="secondary" onClick={() => {
                     // Redirect to another page
                     window.location.href = '/dashboards/risk-assessment';
                 }} className="p-5 hidden md:flex font-semibold" startContent={<FileQuestionIcon />}>Retake Risk Assessment</Button>
             </div>
 
-            <div className="parent grid grid-cols-7 grid-rows-2 md:grid-rows-3 gap-5 font-inter mb-5 md:mb-0">
+            <div className="parent grid grid-cols-7 grid-rows-2 md:grid-rows-3 gap-5 font-sans mb-5 md:mb-0">
                 <div className="div1 md:col-span-3 col-span-full md:row-span-2">
 
                     <div className="box relative flex flex-col justify-between items-center w-full h-full p-8 bg-[rgba(216,184,241,0.07)] border border-[rgba(255,255,255,0.222)] backdrop-blur-[20px] hover:border-white rounded-[0.7rem] transition-all duration-300 ease-in-out">
@@ -209,7 +209,7 @@ export default function MyWheel() {
                         } placement="left-end">
                             <InfoIcon className="absolute top-2 right-3 text-gray-400" />
                         </Tooltip>
-                        <h1 className="text-2xl pb-4">Investment Wheel</h1>
+                        <h1 className="text-2xl pb-4 font-sans">Investment Wheel</h1>
 
                         {chartData && <MySunburstChart data={chartData} amount={parseInt(inputValue)} />}
                         <div className="pb-0 p-4 flex self-center items-center justify-center w-full">

@@ -29,10 +29,10 @@ export default function Home() {
             duration: 0.5,
             ease: [0.4, 0.0, 0.2, 1],
           }}
-          className=" text-8xl px-4 md:text-4xl lg:text-9xl font-annapurna font-bold text-neutral-700 dark:text-white max-w-4xl leading-none text-center mx-auto"
+          className="flex flex-col gap-4 text-8xl px-4 md:text-4xl lg:text-9xl font-sans font-bold text-neutral-700 dark:text-white max-w-4xl leading-none text-center mx-auto my-0"
         >
-          Wheel <br />{" "}
-          <Highlight className="text-black text-3xl lg:text-5xl p-2 dark:text-white">
+          Wheel
+          <Highlight className="text-black text-3xl lg:text-5xl p-4 my-0  dark:text-white leading-none">
             Your Financial Companion
           </Highlight>
 

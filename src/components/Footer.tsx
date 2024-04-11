@@ -11,7 +11,7 @@ function Footer() {
                     <div className="flex items-center gap-2">
 
                         <Logo></Logo>
-                        <p className="font-annapurna text-white text-3xl">Wheel</p>
+                        <p className="font-sans font-bold text-white text-3xl">Wheel</p>
                     </div>
                     <div className="mt-2 text-l">
                         A project by <a target="__blank" className="dark:text-sky-500 text-neutral-600" href="https://github.com/Valeron-T">Valeron Toscano</a> & <a target="__blank" className="dark:text-sky-500 text-neutral-600 font-medium" href="https://github.com/KanielPinto/">Kaniel Pinto</a>
