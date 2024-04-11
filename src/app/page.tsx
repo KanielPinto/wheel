@@ -37,13 +37,13 @@ export default function Home() {
           </Highlight>
 
           <div className="flex font-sans my-8 w-full align-middle justify-between font-bold text-xl">
-            <Button size="lg" color="secondary" variant="shadow" onClick={() => {
+            <Button size="lg" color="secondary" className="font-bold" variant="shadow" onClick={() => {
               // Redirect to another page
               window.location.href = '/dashboards/my-wheel';
             }}>
               Generate Your Wheel
             </Button>
-            <Button color="primary" variant="ghost" size="lg" startContent={<FaGithub></FaGithub>} onClick={() => {
+            <Button color="primary" className="font-bold" variant="ghost" size="lg" startContent={<FaGithub></FaGithub>} onClick={() => {
               // Redirect to another page
               window.location.href = 'https://github.com/KanielPinto/wheel';
             }}>

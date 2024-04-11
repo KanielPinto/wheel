@@ -15,7 +15,7 @@ const AddExpense = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [formData, setFormData] = useState({
     Beneficiary: '',
-    Date: Date(),
+    Date: new Date().toISOString().substring(0,10),
     Amount: 0,
     "Transaction Type": transactionTypeValue,
     Mode: modeValue,
@@ -71,7 +71,7 @@ const AddExpense = () => {
     var { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: new Date(value).toISOString()
+      [name]: new Date(value).toISOString().substring(0,10)
     }));
   }
 
@@ -121,10 +121,10 @@ const AddExpense = () => {
 
 
                   >
-                    <SelectItem key={'deposit'} value="deposit">
+                    <SelectItem key={'Deposit'} value="Deposit">
                       {"Deposit"}
                     </SelectItem>
-                    <SelectItem key={'withdrawal'} value="withdrawal">
+                    <SelectItem key={'Withdrawal'} value="Withdrawal">
                       {"Withdrawal"}
                     </SelectItem>
 

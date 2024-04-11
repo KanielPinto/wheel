@@ -79,7 +79,7 @@ export default function ExpenseTable() {
     const [filterValue, setFilterValue] = useState("");
     const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set([]));
     const [visibleColumns, setVisibleColumns] = useState<Selection>(new Set(INITIAL_VISIBLE_COLUMNS));
-    const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [rowsPerPage, setRowsPerPage] = useState(5);
     const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>({
         column: "date",
         direction: "descending",
@@ -117,22 +117,24 @@ export default function ExpenseTable() {
     }, [transactions, filterValue]);
     const pages = Math.ceil(filteredItems.length / rowsPerPage);
 
-    const items = React.useMemo(() => {
-        const start = (page - 1) * rowsPerPage;
-        const end = start + rowsPerPage;
-
-        return filteredItems.slice(start, end);
-    }, [page, filteredItems, rowsPerPage]);
+    
 
     const sortedItems = React.useMemo(() => {
-        return [...items].sort((a: Transaction, b: Transaction) => {
+        return [...filteredItems].sort((a: Transaction, b: Transaction) => {
             const first = a[sortDescriptor.column as keyof Transaction] as number;
             const second = b[sortDescriptor.column as keyof Transaction] as number;
             const cmp = first < second ? -1 : first > second ? 1 : 0;
-
+    
             return sortDescriptor.direction === "descending" ? -cmp : cmp;
         });
-    }, [sortDescriptor, items]);
+    }, [sortDescriptor, filteredItems]);
+
+    const items = React.useMemo(() => {
+        const start = (page - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+    
+        return sortedItems.slice(start, end);
+    }, [page, sortedItems, rowsPerPage]);
 
     const renderCell = React.useCallback((transaction: Transaction, columnKey: React.Key) => {
         const cellValue = transaction[columnKey as keyof Transaction];
@@ -270,9 +272,9 @@ export default function ExpenseTable() {
                             className="bg-transparent outline-none text-default-400 text-small"
                             onChange={onRowsPerPageChange}
                         >
+                            <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="15">15</option>
-                            <option value="25">25</option>
                         </select>
                     </label>
                 </div>
@@ -344,7 +346,7 @@ export default function ExpenseTable() {
                     </TableColumn>
                 )}
             </TableHeader>
-            <TableBody emptyContent={"No Transactions Found"} items={sortedItems}>
+            <TableBody emptyContent={"No Transactions Found"} items={items}>
                 {(item) => (
                     <TableRow key={item.transaction_id}>
                         {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
