@@ -8,12 +8,8 @@ const columns = [
     { name: "AMOUNT(INR)", uid: "amount", sortable: true },
     { name: "MODE", uid: "mode" },
     { name: "UPI-HANDLE", uid: "upi_handle", sortable: true },
-];
+    {name: "ACTIONS", uid: "actions"},
 
-const statusOptions = [
-    { name: "Active", uid: "active" },
-    { name: "Paused", uid: "paused" },
-    { name: "Vacation", uid: "vacation" },
 ];
 
 const users = [
@@ -218,4 +214,4 @@ const users = [
         email: "mia.robinson@example.com",
     },
 ];
-export { columns, statusOptions, users };
+export { columns, users };

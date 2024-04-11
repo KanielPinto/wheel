@@ -44,13 +44,24 @@ const ExpenseCategoryChart = ({ data, labels, title }) => {
   };
 
   const options = {
+    // responsive: true,
+    // maintainAspectRatio: false,
     plugins: {
       title: {
         display: true,
         text: title,
       },
       legend: {
-        display: false
+        display: true,
+        position: 'right',
+        fullSize: true,
+        labels: {
+          color: "#fff",
+          font: "sans-serif",
+          useBorderRadius: true,
+          padding: 20,
+          borderRadius: 50
+        }
       },
     },
 

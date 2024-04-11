@@ -8,3 +8,17 @@
 body{
   background-color: black;
 }
+
+.rv-xy-plot__series--label {
+  fill: white;
+}
+
+
+.sunburst-viz .text-contour {
+  stroke: none !important;
+}
+
+.sunburst-viz text {
+  font-weight: 600 !important;
+  fill: #fff !important;
+}

@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/navbar/Logo.jsx", "src/components/navbar/Navbar.jsx", "src/app/dashboards/expenses/page.jsx", "src/app/dashboards/my-wheel/page.jsx", "src/components/expense-table/AddExpense.jsx", "src/components/expense-category-chart.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/navbar/Logo.jsx", "src/components/navbar/Navbar.jsx", "src/app/dashboards/expenses/page.jsx", "src/app/dashboards/my-wheel/page.jsx", "src/components/expense-table/AddExpense.jsx", "src/components/expense-category-chart.jsx", "src/app/dashboards/dashboard-lite/page.jsx"],
   "exclude": ["node_modules"]
 }

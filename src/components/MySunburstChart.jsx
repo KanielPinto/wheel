@@ -2,6 +2,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import fromKapsule from "react-kapsule";
 import { useMediaQuery } from '@react-hook/media-query';
+import { Spinner } from "@nextui-org/react";
 
 export default function Chart({ data, amount }) {
   const [ReactSunburst, setReactSunburst] = useState(null);
@@ -44,7 +45,7 @@ export default function Chart({ data, amount }) {
   const chartSize = isMobile ? 280 : 350; // Adjust the size for mobile devices
 
   return (
-    <div className="flex font-poppins w-full justify-center items-center self-center" style={{ maxWidth: '100%', height: 'auto' }}>
+    <div className="flex font-inter text-white  w-full justify-center items-center self-center" style={{ maxWidth: '100%', height: 'auto' }}>
       {ReactSunburst ? (
         <ReactSunburst
           nodeClassName="style"
@@ -53,10 +54,11 @@ export default function Chart({ data, amount }) {
           height={chartSize} // Adjusted size
           maxLevels={2}
           excludeRoot
-          labelOrientation={"angular"}
           label="name"
           size="value"
           color="color"
+          textOutline={false}
+          strokeColor="black"
           centerRadius={0.3}
           radiusScaleExponent={1}
           tooltipContent={(d, node) => `${(node.value / 100) * amount}`}
@@ -66,8 +68,8 @@ export default function Chart({ data, amount }) {
           }}
         />
       ) : (
-        <div>Loading...</div>
-      )}
+        <Spinner label="Loading..." color="secondary" />
+        )}
     </div>
   );
 }

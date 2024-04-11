@@ -32,11 +32,11 @@ export default function Home() {
           className="flex flex-col gap-4 text-8xl px-4 md:text-4xl lg:text-9xl font-sans font-bold text-neutral-700 dark:text-white max-w-4xl leading-none text-center mx-auto my-0"
         >
           Wheel
-          <Highlight className="text-black text-3xl lg:text-5xl p-4 my-0  dark:text-white leading-none">
+          <Highlight className="text-black text-2xl lg:text-5xl p-4 my-0  dark:text-white leading-none">
             Your Financial Companion
           </Highlight>
 
-          <div className="flex font-sans my-8 w-full align-middle justify-between font-bold text-xl">
+          <div className="flex flex-col md:flex-row gap-8 font-sans my-8 w-full align-middle justify-between font-bold text-xl">
             <Button size="lg" color="secondary" className="font-bold" variant="shadow" onClick={() => {
               // Redirect to another page
               window.location.href = '/dashboards/my-wheel';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import {
     Table,
     TableHeader,
@@ -23,9 +23,10 @@ import { capitalize } from "./utils";
 import { useUser } from "@clerk/nextjs";
 import UploadForm from "../UploadForm";
 import AddExpense from "./AddExpense";
+import { VerticalDotsIcon } from "./VerticalDotsIcon";
 
 
-const INITIAL_VISIBLE_COLUMNS = ["transaction_id", "beneficiary","category", "date", "transactionType", "amount", "mode"];
+const INITIAL_VISIBLE_COLUMNS = ["transaction_id", "beneficiary", "category", "date", "transactionType", "amount", "mode", 'actions'];
 
 
 
@@ -33,7 +34,9 @@ export default function ExpenseTable() {
     const { user } = useUser();
     const [transactions, setTransactions] = useState<any>([]);
     const [isUserAvailable, setIsUserAvailable] = useState(false);
-
+    const [formData, setFormData] = useState({
+        "transaction_id": ''
+    });
 
     type Transaction = typeof transactions;
 
@@ -75,11 +78,45 @@ export default function ExpenseTable() {
     }, [isUserAvailable, user?.id]);
 
 
+    useEffect(() => {
+
+        const deleteRow = async () => {
+
+
+            if (isUserAvailable && user?.id) {
+
+                try {
+                    const deleteResponse = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL + `/transactions/${user.id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData),
+                    });
+
+                    console.log(deleteResponse);
+                    if (deleteResponse.ok) {
+                        window.location.reload();
+                    } else {
+                        console.error('Failed to delete expense.');
+                    }
+                } catch (error) {
+                    console.error('Error deleting expense  :', error);
+                }
+            }
+        };
+        deleteRow();
+
+    }, [formData]);
+
+
+
+
 
     const [filterValue, setFilterValue] = useState("");
     const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set([]));
     const [visibleColumns, setVisibleColumns] = useState<Selection>(new Set(INITIAL_VISIBLE_COLUMNS));
-    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
     const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>({
         column: "date",
         direction: "descending",
@@ -117,14 +154,14 @@ export default function ExpenseTable() {
     }, [transactions, filterValue]);
     const pages = Math.ceil(filteredItems.length / rowsPerPage);
 
-    
+
 
     const sortedItems = React.useMemo(() => {
         return [...filteredItems].sort((a: Transaction, b: Transaction) => {
             const first = a[sortDescriptor.column as keyof Transaction] as number;
             const second = b[sortDescriptor.column as keyof Transaction] as number;
             const cmp = first < second ? -1 : first > second ? 1 : 0;
-    
+
             return sortDescriptor.direction === "descending" ? -cmp : cmp;
         });
     }, [sortDescriptor, filteredItems]);
@@ -132,7 +169,7 @@ export default function ExpenseTable() {
     const items = React.useMemo(() => {
         const start = (page - 1) * rowsPerPage;
         const end = start + rowsPerPage;
-    
+
         return sortedItems.slice(start, end);
     }, [page, sortedItems, rowsPerPage]);
 
@@ -189,6 +226,26 @@ export default function ExpenseTable() {
                         <p className="text-bold text-tiny capitalize text-default-400">{transaction.Mode}</p>
                     </div>
                 );
+            case "actions":
+                return (
+                    <div className="relative flex justify-end items-center gap-2">
+                        <Dropdown>
+                            <DropdownTrigger>
+                                <Button isIconOnly size="sm" variant="light">
+                                    <VerticalDotsIcon className="text-default-300" />
+
+                                </Button>
+                            </DropdownTrigger>
+                            <DropdownMenu>
+                                <DropdownItem color="danger" onClick={() => setFormData((prevState) => ({
+                                    ...prevState,
+                                    'transaction_id': transaction.transaction_id,
+                                }))}>Delete
+                                </DropdownItem>
+                            </DropdownMenu>
+                        </Dropdown>
+                    </div >
+                );
             default:
                 return cellValue;
         }
@@ -224,6 +281,8 @@ export default function ExpenseTable() {
         setFilterValue("")
         setPage(1)
     }, [])
+
+
 
     const topContent = React.useMemo(() => {
         return (
@@ -272,9 +331,9 @@ export default function ExpenseTable() {
                             className="bg-transparent outline-none text-default-400 text-small"
                             onChange={onRowsPerPageChange}
                         >
-                            <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="15">15</option>
+                            <option value="20">20</option>
                         </select>
                     </label>
                 </div>

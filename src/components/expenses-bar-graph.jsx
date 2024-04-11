@@ -9,14 +9,17 @@ export default function ExpensesBarGraph({ data, labels }) {
             {
                 label: 'Expenses',
                 data: data,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1,
+                backgroundColor: 'rgba(120, 40, 200, 0.2)',
+                borderColor: 'rgba(120, 40, 200, 1)',
+                borderWidth: 3,
             },
         ],
     };
 
     const options = {
+        responsive: true,
+        // maintainAspectRatio: true,
+        maxBarThickness: 60,
         scales: {
             y: {
                 beginAtZero: true,
@@ -32,11 +35,12 @@ export default function ExpensesBarGraph({ data, labels }) {
                 },
             },
         },
+
     };
 
     return (
-        <div>
-            <Bar data={chartData} options={options} />
+        <div className='w-full h-full'>
+            <Bar style={{ height: "500px" }} data={chartData} options={options} />
         </div>
     );
 };

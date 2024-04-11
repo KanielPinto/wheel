@@ -56,7 +56,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
     return (
         <SidebarContext.Provider value={{ expanded, isMobile }}>
             {isMobile ? (
-                <div className="fixed bottom-1 left-0 right-0 bg-gray-950 border-t shadow-sm z-50">
+                <div className="fixed bottom-0 left-0 right-0 bg-gray-950 border-t shadow-sm z-50">
                     <nav className="flex justify-around my-2">
                         {children}
                         <UserButton></UserButton>
