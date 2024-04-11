@@ -82,7 +82,7 @@ export default function ExpenseTable() {
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>({
         column: "date",
-        direction: "ascending",
+        direction: "descending",
     });
 
     const [page, setPage] = useState(1);
