@@ -40,7 +40,20 @@ export default function ExpensesBarGraph({ data, labels }) {
 
     return (
         <div className='w-full h-96'>
-            <Bar data={chartData} options={options} />
+            <Bar data={chartData} plugins={[{
+                beforeInit(chart) {
+                    // Get a reference to the original fit function
+                    const originalFit = chart.legend.fit;
+
+                    // Override the fit function
+                    chart.legend.fit = function fit() {
+                        // Call the original function and bind scope in order to use `this` correctly inside it
+                        originalFit.bind(chart.legend)();
+                        // Change the height as suggested in other answers
+                        this.height += 15;
+                    }
+                }
+            }]} options={options} />
 
         </div>
     );

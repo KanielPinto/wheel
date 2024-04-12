@@ -181,14 +181,12 @@ function ExpenseTracker() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div className="flex flex-col shadow-soft bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white p-6 transition-all duration-100 ease-in-out rounded-xl justify-center items-center self-center align-middle w-full h-full">
                     <h1 className="text-2xl">Expense Modes</h1>
-                    <div className="flex flex-col lg:p-2 justify-center sm:flex-row p-0">
-                        <div className="lg:w-96 w-full">
-                            <ExpenseCategoryChart
-                                data={modeCount?.map((data) => data['count'])}
-                                labels={modeCount?.map((data) => data['_id']['mode'])}
-                                title=""
-                            />
-                        </div>
+                    <div className="lg:w-96 w-full">
+                        <ExpenseCategoryChart
+                            data={modeCount?.map((data) => data['count'])}
+                            labels={modeCount?.map((data) => data['_id']['mode'])}
+                            title=""
+                        />
                     </div>
                 </div>
                 <div className="flex flex-col shadow-soft bg-[rgba(216,184,241,0.07)] border border-[rgba(244,235,248,0.22)] backdrop-blur-[20px] hover:border-white p-6 transition-all duration-100 ease-in-out rounded-xl justify-center items-center self-center align-middle w-full h-full">
@@ -208,7 +206,10 @@ function ExpenseTracker() {
                     <div className="w-full p-2 relative block">
                         <ExpensesBarGraph
                             data={highestExpense?.map((data) => data['Amount'])}
-                            labels={highestExpense?.map((data) => data['Beneficiary'])}
+                            labels={highestExpense?.map((data) => {
+                                var formattedLabel = String(data['Beneficiary']).split("  ");
+                                return formattedLabel
+                            })}
                         />
                     </div>
                 </div>
@@ -217,7 +218,10 @@ function ExpenseTracker() {
                     <div className="w-full p-2 relative block">
                         <ExpensesBarGraph
                             data={highestIncome?.map((data) => data['Amount'])}
-                            labels={highestIncome?.map((data) => data['Beneficiary'])}
+                            labels={highestIncome?.map((data) => {
+                                var formattedLabel = String(data['Beneficiary']).split("  ");
+                                return formattedLabel
+                            })}
                         />
                     </div>
                 </div>

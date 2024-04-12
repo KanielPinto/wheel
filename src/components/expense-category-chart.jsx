@@ -51,23 +51,46 @@ const ExpenseCategoryChart = ({ data, labels, title }) => {
         display: true,
         text: title,
       },
+      beforeInit: function (chart, options) {
+        chart.legend.afterFit = function () {
+          this.height = this.height + 50;
+        };
+      },
       legend: {
         display: true,
-        position: 'right',
-        fullSize: true,
+        // position: 'right',
+        fullSize: false,
         labels: {
           color: "#fff",
           font: "sans-serif",
           useBorderRadius: true,
           padding: 20,
-          borderRadius: 50
-        }
+          borderRadius: 50,
+          boxWidth: 18,
+
+        },
+
       },
     },
 
   };
 
-  return <Pie data={chartData} options={options} />;
+  return (<div className='w-full h-full'>
+    <Pie data={chartData} plugins={[{
+      beforeInit(chart) {
+        // Get a reference to the original fit function
+        const originalFit = chart.legend.fit;
+
+        // Override the fit function
+        chart.legend.fit = function fit() {
+          // Call the original function and bind scope in order to use `this` correctly inside it
+          originalFit.bind(chart.legend)();
+          // Change the height as suggested in other answers
+          this.height += 15;
+        }
+      }
+    }]} options={options} />
+  </div>);
 };
 
 export default ExpenseCategoryChart;

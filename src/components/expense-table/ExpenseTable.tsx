@@ -24,6 +24,7 @@ import { useUser } from "@clerk/nextjs";
 import UploadForm from "../UploadForm";
 import AddExpense from "./AddExpense";
 import { VerticalDotsIcon } from "./VerticalDotsIcon";
+import { Trash2Icon } from "lucide-react";
 
 
 const INITIAL_VISIBLE_COLUMNS = ["transaction_id", "beneficiary", "category", "date", "transactionType", "amount", "mode", 'actions'];
@@ -237,7 +238,7 @@ export default function ExpenseTable() {
                                 </Button>
                             </DropdownTrigger>
                             <DropdownMenu>
-                                <DropdownItem color="danger" onClick={() => setFormData((prevState) => ({
+                                <DropdownItem startContent={<Trash2Icon></Trash2Icon>} className="text-red-600" onClick={() => setFormData((prevState) => ({
                                     ...prevState,
                                     'transaction_id': transaction.transaction_id,
                                 }))}>Delete
