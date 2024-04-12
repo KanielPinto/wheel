@@ -55,14 +55,14 @@ export default function RiskForm() {
             mydataJSON.uid = user.id; //add something
             mydataJSON = JSON.stringify(mydataJSON); //change back to string
 
-            fetch(process.env.NEXT_PUBLIC_API_BASE_URL+"/risk/calculate", {
+            fetch(process.env.NEXT_PUBLIC_API_BASE_URL + "/risk/calculate", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: mydataJSON
             })
-            
+
         }
         reset()
     }
@@ -355,7 +355,7 @@ export default function RiskForm() {
                                     </div>
                                     {errors.investmentGoals?.message && (
                                         <p className='mt-2 text-lg text-red-400'>
-                                            {errors.investmentGoals.message}
+                                            Please select atleast one.
                                         </p>
                                     )}
                                 </div>
@@ -493,7 +493,7 @@ export default function RiskForm() {
                                     </div>
                                     {errors.choiceOfTrain?.message && (
                                         <p className='mt-2 text-lg text-red-400'>
-                                            {errors.choiceOfTrain.message}
+                                            Please select an option.
                                         </p>
                                     )}
                                 </div>
@@ -547,7 +547,7 @@ export default function RiskForm() {
                                     </div>
                                     {errors.preferredDrivingSpeed?.message && (
                                         <p className='mt-2 text-lg text-red-400'>
-                                            {errors.preferredDrivingSpeed.message}
+                                            Please select an option.
                                         </p>
                                     )}
                                 </div>
@@ -601,7 +601,7 @@ export default function RiskForm() {
                                     </div>
                                     {errors.portfolioRecoveryTime?.message && (
                                         <p className='mt-2 text-lg text-red-400'>
-                                            {errors.portfolioRecoveryTime.message}
+                                            Please select an option.
                                         </p>
                                     )}
                                 </div>
@@ -645,7 +645,7 @@ export default function RiskForm() {
                                     </div>
                                     {errors.preferredPortfolioStrategy?.message && (
                                         <p className='mt-2 text-lg text-red-400'>
-                                            {errors.preferredPortfolioStrategy.message}
+                                            Please select an option.
                                         </p>
                                     )}
                                 </div>

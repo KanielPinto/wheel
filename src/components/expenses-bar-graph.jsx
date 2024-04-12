@@ -18,7 +18,7 @@ export default function ExpensesBarGraph({ data, labels }) {
 
     const options = {
         responsive: true,
-        // maintainAspectRatio: true,
+        maintainAspectRatio: false,
         maxBarThickness: 60,
         scales: {
             y: {
@@ -39,8 +39,9 @@ export default function ExpensesBarGraph({ data, labels }) {
     };
 
     return (
-        <div className='w-full h-full'>
-            <Bar style={{ height: "500px" }} data={chartData} options={options} />
+        <div className='w-full h-96'>
+            <Bar data={chartData} options={options} />
+
         </div>
     );
 };

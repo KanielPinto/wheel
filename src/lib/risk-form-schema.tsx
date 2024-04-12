@@ -9,14 +9,14 @@ export const FormDataSchema = z.object({
   attitudeTowardsRisk:  z.enum(['I am low risk taker, I need safety and security.', 'I am an average risk taker, can invest in risky instruments to earn a good return.', 'I am a high risk taker, will be happy to invest in risky instruments to earn high returns.']).default('I am low risk taker, I need safety and security.'),
 
   // Section 2: Investment Preferences and Goals
-  investmentGoals: z.array(z.enum(['Wealth accumulation', 'Retirement planning', 'Education funding', 'Short-term gains', 'Capital preservation'])).default([]),
+  investmentGoals: z.array(z.enum(['Wealth accumulation', 'Retirement planning', 'Education funding', 'Short-term gains', 'Capital preservation'])).min(1),
   preferredInstruments: z.enum(['Share Market', 'Mutual Funds', 'Bonds', 'Fixed Deposits', 'None']).default('None'),
   marketCorrectionTolerance: z.enum(['5%', '10%', '15%', '20%']).default('5%'),
   investmentHorizon: z.enum(['Less than 1 year', '1-3 years', '3-5 years', '6-10 years', 'More than 10 years']).default('Less than 1 year'),
 
   // Section 3: Risk Assessment Scenarios
-  choiceOfTrain: z.enum(['The most crowded train to reach faster', 'A less crowded train to ensure personal space', 'Whichever comes faster']).default('The most crowded train to reach faster'),
-  preferredDrivingSpeed: z.enum(['Below 40 km/h', '40-60 km/h', '60-80 km/h', 'Above 80 km/h']).default('Below 40 km/h'),
-  portfolioRecoveryTime: z.enum(['Immediately sell to limit losses', 'Wait for a short period (1-3 months)', 'Wait for a moderate period (4-12 months)', 'Wait for an extended period (more than 1 year)']).default('Immediately sell to limit losses'),
-  preferredPortfolioStrategy: z.enum(['Aggressive (High risk, high potential return)', 'Moderate (Balanced risk and return)', 'Conservative (Low risk, low potential return)']).default('Aggressive (High risk, high potential return)')
+  choiceOfTrain: z.enum(['The most crowded train to reach faster', 'A less crowded train to ensure personal space', 'Whichever comes faster']),
+  preferredDrivingSpeed: z.enum(['Below 40 km/h', '40-60 km/h', '60-80 km/h', 'Above 80 km/h']),
+  portfolioRecoveryTime: z.enum(['Immediately sell to limit losses', 'Wait for a short period (1-3 months)', 'Wait for a moderate period (4-12 months)', 'Wait for an extended period (more than 1 year)']),
+  preferredPortfolioStrategy: z.enum(['Aggressive (High risk, high potential return)', 'Moderate (Balanced risk and return)', 'Conservative (Low risk, low potential return)'])
 });
