@@ -36,11 +36,11 @@ export default function HomeNav() {
                         Home
                     </Link>
                 </NavbarItem>
-                <NavbarItem>
+                {/* <NavbarItem>
                     <Link color="foreground" href="/about-us" className="text-xl hover:text-purple-400" aria-current="page">
                         About Us
                     </Link>
-                </NavbarItem>
+                </NavbarItem> */}
                 <NavbarItem>
                     <Link color="foreground" className="text-xl hover:text-purple-400" href="/dashboards/my-wheel">
                         Dashboard
@@ -81,11 +81,11 @@ export default function HomeNav() {
                         Home
                     </Link>
                 </NavbarMenuItem>
-                <NavbarMenuItem>
+                {/* <NavbarMenuItem>
                     <Link color="foreground" className="text-xl" href="/about-us">
                         About Us
                     </Link>
-                </NavbarMenuItem>
+                </NavbarMenuItem> */}
                 <NavbarMenuItem>
                     <Link color="foreground" className="text-xl" href="/dashboards/my-wheel">
                         Dashboards
