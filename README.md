@@ -213,7 +213,7 @@ npm run build
 
 ## 👏 Acknowledgments
 
-Thank you to Prof. Aaron John for supervising the project.
+Thank you to Prof. Aaron Johns for supervising the project.
 
 [**Return**](#-quick-links)
 
